@@ -1,0 +1,37 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="juries")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - properties:
+      name:
+        description: "Name or identifier for the jury"
+        type: string
+        x-form-field: true
+        x-field-label: "Jury Name"
+      jurorIds:
+        description: "List of juror IDs that make up this jury"
+        type: array
+        items:
+          type: string
+          description: "ID of a juror"
+        x-form-field: true
+        x-field-label: "Jurors"
+      foremanId:
+        description: "ID of the juror who is the foreman"
+        type: string
+        x-form-field: true
+        x-field-label: "Foreman"
+      size:
+        description: "Number of jurors in the jury"
+        type: integer
+        minimum: 1
+        x-form-field: true
+        x-field-label: "Jury Size"
+      status:
+        $ref: 'JuryStatus.yaml'
+    type: object
+    required:
+      - name
+      - jurorIds

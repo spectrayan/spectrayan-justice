@@ -1,0 +1,42 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="victims")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      dateOfBirth:
+        description: "Victim's date of birth"
+        type: string
+        format: date
+        x-form-field: true
+        x-field-label: "Date of Birth"
+      address:
+        $ref: '../common/Address.yaml'
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      email:
+        description: "Victim's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      injuryDescription:
+        description: "Description of injuries or damages suffered"
+        type: string
+        x-form-field: true
+        x-field-label: "Injury Description"
+      impactStatement:
+        description: "Victim impact statement"
+        type: string
+        x-form-field: true
+        x-field-label: "Impact Statement"
+      relationshipToDefendant:
+        description: "Relationship between victim and defendant"
+        type: string
+        x-form-field: true
+        x-field-label: "Relationship to Defendant"
+    type: object
+    required:
+      - dateOfBirth

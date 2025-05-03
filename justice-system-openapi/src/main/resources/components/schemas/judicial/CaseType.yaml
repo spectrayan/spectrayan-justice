@@ -1,0 +1,15 @@
+type: string
+description: "Type of case"
+enum:
+  - CRIMINAL
+  - CIVIL
+  - FAMILY
+  - JUVENILE
+  - PROBATE
+  - TRAFFIC
+  - SMALL_CLAIMS
+  - APPELLATE
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Case Type"

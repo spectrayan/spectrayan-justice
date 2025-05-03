@@ -1,0 +1,110 @@
+get:
+  tags:
+    - Jury
+  summary: Get all juries
+  description: Retrieves a list of all juries. The response is paginated.
+  operationId: getJuries
+  x-spring-paginated: true
+  security:
+    - main_auth:
+        - read:juries
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the list of juries.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Jury.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified jury is not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+post:
+  tags:
+    - Jury
+  summary: Create new jury
+  description: Creates a new jury. The jury information is provided in the request body.
+  operationId: createJury
+  security:
+    - main_auth:
+        - write:juries
+    - api_key: [ ]
+  requestBody:
+    description: Jury information to be created including juror IDs, foreman, and other relevant data.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Jury.yaml'
+  responses:
+    '200':
+      description: Successfully created the jury. Returns the created jury object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Jury.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid jury data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to create juries.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - A jury with the same identifying information already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+description: Jury APIs
+x-content-type: application/json
+x-accepts:
+    - application/json
+x-tags:
+    - tag: Jury

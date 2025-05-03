@@ -1,0 +1,34 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="defendants")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      dateOfBirth:
+        description: "Defendant's date of birth"
+        type: string
+        format: date
+        x-form-field: true
+        x-field-label: "Date of Birth"
+      address:
+        $ref: '../common/Address.yaml'
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      email:
+        description: "Defendant's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      criminalHistory:
+        description: "Summary of defendant's criminal history"
+        type: string
+        x-form-field: true
+        x-field-label: "Criminal History"
+      custodyStatus:
+        $ref: 'CustodyStatus.yaml'
+    type: object
+    required:
+      - dateOfBirth

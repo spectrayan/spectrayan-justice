@@ -1,0 +1,13 @@
+type: string
+description: "Current custody status of the defendant"
+enum:
+  - IN_CUSTODY
+  - RELEASED_ON_BAIL
+  - RELEASED_ON_RECOGNIZANCE
+  - ESCAPED
+  - PROBATION
+  - PAROLE
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Custody Status"

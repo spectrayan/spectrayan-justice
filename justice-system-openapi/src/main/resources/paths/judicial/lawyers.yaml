@@ -1,0 +1,110 @@
+get:
+  tags:
+    - Lawyer
+  summary: Get all lawyers
+  description: Retrieves a list of all lawyers. The response is paginated.
+  operationId: getLawyers
+  x-spring-paginated: true
+  security:
+    - main_auth:
+        - read:lawyers
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the list of lawyers.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Lawyer.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified lawyer is not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+post:
+  tags:
+    - Lawyer
+  summary: Create new lawyer
+  description: Creates a new lawyer profile. The lawyer information is provided in the request body.
+  operationId: createLawyer
+  security:
+    - main_auth:
+        - write:lawyers
+    - api_key: [ ]
+  requestBody:
+    description: Lawyer information to be created including personal details, contact information, and other relevant data.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Lawyer.yaml'
+  responses:
+    '200':
+      description: Successfully created the lawyer profile. Returns the created lawyer object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Lawyer.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid lawyer data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to create lawyers.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - A lawyer with the same identifying information already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+description: Lawyer APIs
+x-content-type: application/json
+x-accepts:
+    - application/json
+x-tags:
+    - tag: Lawyer

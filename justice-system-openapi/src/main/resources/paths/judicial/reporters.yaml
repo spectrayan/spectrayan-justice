@@ -1,0 +1,110 @@
+get:
+  tags:
+    - Reporter
+  summary: Get all reporters
+  description: Retrieves a list of all reporters. The response is paginated.
+  operationId: getReporters
+  x-spring-paginated: true
+  security:
+    - main_auth:
+        - read:reporters
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the list of reporters.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Reporter.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified reporter is not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+post:
+  tags:
+    - Reporter
+  summary: Create new reporter
+  description: Creates a new reporter profile. The reporter information is provided in the request body.
+  operationId: createReporter
+  security:
+    - main_auth:
+        - write:reporters
+    - api_key: [ ]
+  requestBody:
+    description: Reporter information to be created including personal details, certification number, and other relevant data.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Reporter.yaml'
+  responses:
+    '200':
+      description: Successfully created the reporter profile. Returns the created reporter object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Reporter.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid reporter data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to create reporters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - A reporter with the same identifying information already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+description: Reporter APIs
+x-content-type: application/json
+x-accepts:
+    - application/json
+x-tags:
+    - tag: Reporter

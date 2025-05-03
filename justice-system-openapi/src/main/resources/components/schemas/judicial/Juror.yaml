@@ -1,0 +1,43 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="jurors")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      dateOfBirth:
+        description: "Juror's date of birth"
+        type: string
+        format: date
+        x-form-field: true
+        x-field-label: "Date of Birth"
+      address:
+        $ref: '../common/Address.yaml'
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      email:
+        description: "Juror's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      occupation:
+        description: "Juror's occupation"
+        type: string
+        x-form-field: true
+        x-field-label: "Occupation"
+      juryDutyHistory:
+        description: "History of previous jury duty service"
+        type: string
+        x-form-field: true
+        x-field-label: "Jury Duty History"
+      isForeman:
+        description: "Indicates if the juror is the jury foreman"
+        type: boolean
+        default: false
+        x-form-field: true
+        x-field-label: "Is Foreman"
+    type: object
+    required:
+      - dateOfBirth

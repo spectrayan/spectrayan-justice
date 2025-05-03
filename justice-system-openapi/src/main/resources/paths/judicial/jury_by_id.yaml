@@ -1,0 +1,179 @@
+get:
+  tags:
+    - Jury
+  summary: Get jury by id
+  description: Retrieves detailed information for a specific jury identified by the provided ID.
+  operationId: getJuryById
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the jury for which you want to retrieve the data."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - read:juries
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the jury information for the specified ID.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Jury.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access this jury's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified jury was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Jury
+  summary: Update jury data
+  description: "This operation allows updating the information in a jury. The update can only be performed by users with appropriate permissions."
+  operationId: updateJury
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the jury to be updated."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'write:juries'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Jury.yaml'
+    description: Updated jury information including juror IDs, foreman, and other relevant data.
+    required: true
+  responses:
+    '200':
+      description: Successfully updated the jury. Returns the updated jury object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Jury.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid jury data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this jury's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified jury was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - The update would result in a conflict with existing data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Jury
+  summary: Delete a jury
+  description: "This operation permanently deletes all data associated with the requested jury ID. Only users with appropriate permissions can perform this operation."
+  operationId: deleteJury
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the jury to be deleted."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this jury.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified jury was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:juries'
+        - 'write:juries'
+    - api_key: [ ]
+description: Jury APIs

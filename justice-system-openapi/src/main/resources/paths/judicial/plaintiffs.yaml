@@ -1,0 +1,110 @@
+get:
+  tags:
+    - Plaintiff
+  summary: Get all plaintiffs
+  description: Retrieves a list of all plaintiffs. The response is paginated.
+  operationId: getPlaintiffs
+  x-spring-paginated: true
+  security:
+    - main_auth:
+        - read:plaintiffs
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the list of plaintiffs.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Plaintiff.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified plaintiff is not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+post:
+  tags:
+    - Plaintiff
+  summary: Create new plaintiff
+  description: Creates a new plaintiff profile. The plaintiff information is provided in the request body.
+  operationId: createPlaintiff
+  security:
+    - main_auth:
+        - write:plaintiffs
+    - api_key: [ ]
+  requestBody:
+    description: Plaintiff information to be created including personal details, claim description, and other relevant data.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Plaintiff.yaml'
+  responses:
+    '200':
+      description: Successfully created the plaintiff profile. Returns the created plaintiff object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Plaintiff.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid plaintiff data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to create plaintiffs.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - A plaintiff with the same identifying information already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+description: Plaintiff APIs
+x-content-type: application/json
+x-accepts:
+    - application/json
+x-tags:
+    - tag: Plaintiff

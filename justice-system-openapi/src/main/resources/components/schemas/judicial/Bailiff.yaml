@@ -1,0 +1,48 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="bailiffs")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      badgeNumber:
+        description: "Bailiff's badge or identification number"
+        type: string
+        x-form-field: true
+        x-field-label: "Badge Number"
+      rank:
+        description: "Bailiff's rank or position"
+        type: string
+        x-form-field: true
+        x-field-label: "Rank"
+      email:
+        description: "Bailiff's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      courtId:
+        description: "ID of the court the bailiff is assigned to"
+        type: string
+        x-form-field: true
+        x-field-label: "Court ID"
+      yearsOfService:
+        description: "Number of years the bailiff has been in service"
+        type: integer
+        minimum: 0
+        x-form-field: true
+        x-field-label: "Years of Service"
+      certifications:
+        description: "List of certifications held by the bailiff"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Certifications"
+    type: object
+    required:
+      - badgeNumber
+      - courtId

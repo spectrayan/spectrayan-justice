@@ -1,0 +1,13 @@
+type: string
+description: "Type of plaintiff"
+enum:
+  - INDIVIDUAL
+  - CORPORATION
+  - GOVERNMENT
+  - CLASS_ACTION
+  - NON_PROFIT
+default: INDIVIDUAL
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Plaintiff Type"

@@ -1,0 +1,111 @@
+get:
+  tags:
+    - Judge
+  summary: Get all judges
+  description: Retrieves a list of all judges. The response is paginated.
+  operationId: getJudges
+  x-spring-paginated: true
+  security:
+    - main_auth:
+        - read:judges
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the list of judges.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Judge.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified judge is not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+post:
+  tags:
+    - Judge
+  summary: Create new judge
+  description: |
+    Creates a new judge profile for the specified tenant. The judge information is provided in the request body.
+  operationId: createJudge
+  #security:
+   # - main_auth:
+    #    - write:judges
+    #- api_key: [ ]
+  requestBody:
+    description: Judge information to be created including personal details, contact information, and other relevant data.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Judge.yaml'
+  responses:
+    '200':
+      description: Successfully created the judge profile. Returns the created judge object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Judge.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid judge data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to create judges.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - A judge with the same identifying information already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+description: Judge APIs
+x-content-type: application/json
+x-accepts:
+    - application/json
+x-tags:
+    - tag: Judge

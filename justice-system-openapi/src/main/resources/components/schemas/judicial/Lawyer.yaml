@@ -1,0 +1,40 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="lawyers")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      type:
+        $ref: 'LawyerType.yaml'
+      barNumber:
+        description: "Lawyer's bar association number"
+        type: string
+        x-form-field: true
+        x-field-label: "Bar Number"
+      firm:
+        description: "Law firm or organization the lawyer is associated with"
+        type: string
+        x-form-field: true
+        x-field-label: "Firm/Organization"
+      email:
+        description: "Lawyer's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      address:
+        $ref: '../common/Address.yaml'
+      yearsOfExperience:
+        description: "Years of experience as a lawyer"
+        type: integer
+        minimum: 0
+        x-form-field: true
+        x-field-label: "Years of Experience"
+    type: object
+    required:
+      - type
+      - barNumber

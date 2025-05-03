@@ -1,0 +1,180 @@
+get:
+  tags:
+    - Case
+  summary: Get case by ID
+  description: Retrieves a specific case by its unique identifier.
+  operationId: getCaseById
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the case to retrieve."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successfully retrieved the case.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Case.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Case
+  summary: Update case
+  description: Updates an existing case with the provided information.
+  operationId: updateCase
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the case to update."
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Updated case information.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Case.yaml'
+  responses:
+    '200':
+      description: Successfully updated the case. Returns the updated case object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Case.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid case data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this case.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Case
+  summary: Delete a case
+  description: "This operation permanently deletes all data associated with the requested case ID. Only administrators with appropriate permissions can perform this operation."
+  operationId: deleteCase
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the case to be deleted."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this case.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:cases'
+        - 'write:cases'
+    - api_key: [ ]
+description: Case APIs

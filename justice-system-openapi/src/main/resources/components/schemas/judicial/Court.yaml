@@ -1,0 +1,35 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="courts")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - properties:
+      name:
+        description: "Name of the court"
+        type: string
+        minLength: 1
+        x-form-field: true
+        x-field-label: "Court Name"
+      type:
+        $ref: 'CourtType.yaml'
+      jurisdiction:
+        description: "Jurisdiction of the court"
+        type: string
+        x-form-field: true
+        x-field-label: "Jurisdiction"
+      address:
+        $ref: '../common/Address.yaml'
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      email:
+        description: "Court's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+    type: object
+    required:
+      - name
+      - type
+      - jurisdiction

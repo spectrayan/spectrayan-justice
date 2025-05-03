@@ -1,0 +1,12 @@
+type: string
+description: "Current status of the jury"
+enum:
+  - SELECTION
+  - EMPANELED
+  - DELIBERATING
+  - DISMISSED
+default: SELECTION
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Jury Status"

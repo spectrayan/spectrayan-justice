@@ -1,0 +1,180 @@
+get:
+  tags:
+    - Court
+  summary: Get court by ID
+  description: Retrieves a specific court by its unique identifier.
+  operationId: getCourtById
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the court to retrieve."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successfully retrieved the court.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Court.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified court was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Court
+  summary: Update court
+  description: Updates an existing court with the provided information.
+  operationId: updateCourt
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the court to update."
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Updated court information.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Court.yaml'
+  responses:
+    '200':
+      description: Successfully updated the court. Returns the updated court object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Court.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid court data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this court.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified court was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Court
+  summary: Delete a court
+  description: "This operation permanently deletes all data associated with the requested court ID. Only administrators with appropriate permissions can perform this operation."
+  operationId: deleteCourt
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the court to be deleted."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this court.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified court was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:courts'
+        - 'write:courts'
+    - api_key: [ ]
+description: Court APIs

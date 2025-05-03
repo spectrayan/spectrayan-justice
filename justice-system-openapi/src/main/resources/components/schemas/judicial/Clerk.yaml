@@ -1,0 +1,41 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="clerks")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      position:
+        description: "Position or title of the clerk"
+        type: string
+        x-form-field: true
+        x-field-label: "Position"
+      department:
+        description: "Department the clerk works in"
+        type: string
+        x-form-field: true
+        x-field-label: "Department"
+      email:
+        description: "Clerk's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      courtId:
+        description: "ID of the court the clerk is associated with"
+        type: string
+        x-form-field: true
+        x-field-label: "Court ID"
+      yearsOfService:
+        description: "Number of years the clerk has been in service"
+        type: integer
+        minimum: 0
+        x-form-field: true
+        x-field-label: "Years of Service"
+    type: object
+    required:
+      - position
+      - courtId

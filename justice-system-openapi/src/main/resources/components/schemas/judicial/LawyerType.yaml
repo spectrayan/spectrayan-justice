@@ -1,0 +1,16 @@
+type: string
+enum:
+  - PROSECUTOR
+  - DEFENSE
+  - PUBLIC_DEFENDER
+  - CORPORATE
+  - CIVIL
+  - CRIMINAL
+  - FAMILY
+  - TAX
+  - IMMIGRATION
+  - INTELLECTUAL_PROPERTY
+  - OTHER
+description: "Type of lawyer (e.g., prosecutor, defense, etc.)"
+x-form-field: true
+x-field-label: "Lawyer Type"

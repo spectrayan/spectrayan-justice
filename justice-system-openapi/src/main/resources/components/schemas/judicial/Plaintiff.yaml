@@ -1,0 +1,40 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="plaintiffs")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      type:
+        $ref: 'PlaintiffType.yaml'
+      address:
+        $ref: '../common/Address.yaml'
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      email:
+        description: "Plaintiff's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      claimDescription:
+        description: "Description of the plaintiff's claim"
+        type: string
+        x-form-field: true
+        x-field-label: "Claim Description"
+      damagesRequested:
+        description: "Amount of damages requested"
+        type: number
+        format: double
+        minimum: 0
+        x-form-field: true
+        x-field-label: "Damages Requested"
+      lawyerId:
+        description: "ID of the lawyer representing the plaintiff"
+        type: string
+        x-form-field: true
+        x-field-label: "Lawyer ID"
+    type: object
+    required:
+      - type

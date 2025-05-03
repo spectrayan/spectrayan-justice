@@ -1,0 +1,15 @@
+type: string
+description: "Current status of the case"
+enum:
+  - PENDING
+  - ACTIVE
+  - DISMISSED
+  - SETTLED
+  - VERDICT_REACHED
+  - APPEALED
+  - CLOSED
+default: PENDING
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Case Status"

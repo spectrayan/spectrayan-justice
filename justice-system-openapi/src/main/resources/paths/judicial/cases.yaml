@@ -1,0 +1,104 @@
+get:
+  tags:
+    - Case
+  summary: Get all cases
+  description: Retrieves a list of all cases. The response is paginated.
+  operationId: getCases
+  x-spring-paginated: true
+  security:
+    - main_auth:
+        - read:cases
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the list of cases.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Case.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+post:
+  tags:
+    - Case
+  summary: Create new case
+  description: Creates a new case record. The case information is provided in the request body.
+  operationId: createCase
+  security:
+    - main_auth:
+        - write:cases
+    - api_key: [ ]
+  requestBody:
+    description: Case information to be created.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Case.yaml'
+  responses:
+    '200':
+      description: Successfully created the case record. Returns the created case object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Case.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid case data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to create cases.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - A case with the same identifying information already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+description: Case APIs
+x-content-type: application/json
+x-accepts:
+    - application/json
+x-tags:
+    - tag: Case

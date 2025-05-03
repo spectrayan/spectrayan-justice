@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Justice system APIs
+  description: |
+    This is the OpenAPI Specification for justice system APIs.
+    It provides a comprehensive suite of functionalities to interact with our platform.
+    It is designed to be easy to use and integrate with various application environments.
+  version: 1.0.0
+  termsOfService: 'https://api.justice.spectrayan.com/v1/terms'
+  contact:
+    name: Spectrayan Admin
+    email: admin@spectrayan.com
+    url: 'https://api.justice.spectrayan.com/v1/contact'
+  license:
+    name: Spectrayan License
+    url: 'https://api.justice.spectrayan.com/v1/license'
+servers:
+  - url: 'https://api.justice.spectrayan.com'
+    description: Production Server
+  - url: 'http://localhost:8080/justice'
+    description: Local Server
+
+paths:
+
+  # Judge APIs start
+  /v1/judges:
+    $ref: 'paths/judicial/judges.yaml'
+  /v1/judges/{id}:
+    $ref: 'paths/judicial/judge_by_id.yaml'
+
+  # Court APIs start
+  /v1/courts:
+    $ref: 'paths/judicial/courts.yaml'
+  /v1/courts/{id}:
+    $ref: 'paths/judicial/court_by_id.yaml'
+
+  # Case APIs start
+  /v1/cases:
+    $ref: 'paths/judicial/cases.yaml'
+  /v1/cases/{id}:
+    $ref: 'paths/judicial/case_by_id.yaml'
+
+  # Lawyer APIs start
+  /v1/lawyers:
+    $ref: 'paths/judicial/lawyers.yaml'
+  /v1/lawyers/{id}:
+    $ref: 'paths/judicial/lawyer_by_id.yaml'
+
+  # Defendant APIs start
+  /v1/defendants:
+    $ref: 'paths/judicial/defendants.yaml'
+  /v1/defendants/{id}:
+    $ref: 'paths/judicial/defendant_by_id.yaml'
+
+  # Juror APIs start
+  /v1/jurors:
+    $ref: 'paths/judicial/jurors.yaml'
+  /v1/jurors/{id}:
+    $ref: 'paths/judicial/juror_by_id.yaml'
+
+  # Jury APIs start
+  /v1/juries:
+    $ref: 'paths/judicial/juries.yaml'
+  /v1/juries/{id}:
+    $ref: 'paths/judicial/jury_by_id.yaml'
+
+  # Witness APIs start
+  /v1/witnesses:
+    $ref: 'paths/judicial/witnesses.yaml'
+  /v1/witnesses/{id}:
+    $ref: 'paths/judicial/witness_by_id.yaml'
+
+  # Victim APIs start
+  /v1/victims:
+    $ref: 'paths/judicial/victims.yaml'
+  /v1/victims/{id}:
+    $ref: 'paths/judicial/victim_by_id.yaml'
+
+  # Plaintiff APIs start
+  /v1/plaintiffs:
+    $ref: 'paths/judicial/plaintiffs.yaml'
+  /v1/plaintiffs/{id}:
+    $ref: 'paths/judicial/plaintiff_by_id.yaml'
+
+  # Clerk APIs start
+  /v1/clerks:
+    $ref: 'paths/judicial/clerks.yaml'
+  /v1/clerks/{id}:
+    $ref: 'paths/judicial/clerk_by_id.yaml'
+
+  # Bailiff APIs start
+  /v1/bailiffs:
+    $ref: 'paths/judicial/bailiffs.yaml'
+  /v1/bailiffs/{id}:
+    $ref: 'paths/judicial/bailiff_by_id.yaml'
+
+  # Reporter APIs start
+  /v1/reporters:
+    $ref: 'paths/judicial/reporters.yaml'
+  /v1/reporters/{id}:
+    $ref: 'paths/judicial/reporter_by_id.yaml'

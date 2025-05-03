@@ -1,0 +1,35 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="witnesses")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      type:
+        $ref: 'WitnessType.yaml'
+      testimony:
+        description: "Summary of witness testimony"
+        type: string
+        x-form-field: true
+        x-field-label: "Testimony"
+      credibility:
+        $ref: 'CredibilityLevel.yaml'
+      address:
+        $ref: '../common/Address.yaml'
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      email:
+        description: "Witness's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      relationship:
+        description: "Relationship to the case or parties involved"
+        type: string
+        x-form-field: true
+        x-field-label: "Relationship"
+    type: object
+    required:
+      - type

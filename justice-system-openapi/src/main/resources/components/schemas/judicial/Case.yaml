@@ -1,0 +1,129 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="cases")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - properties:
+      caseNumber:
+        description: "Unique case number assigned by the court"
+        type: string
+        x-form-field: true
+        x-field-label: "Case Number"
+      title:
+        description: "Title or name of the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Case Title"
+      description:
+        description: "Brief description of the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Description"
+      type:
+        $ref: 'CaseType.yaml'
+      status:
+        $ref: 'CaseStatus.yaml'
+      filingDate:
+        description: "Date the case was filed"
+        type: string
+        format: date
+        x-form-field: true
+        x-field-label: "Filing Date"
+      courtId:
+        description: "ID of the court handling the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Court ID"
+      judgeId:
+        description: "ID of the judge presiding over the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Judge ID"
+      prosecutorIds:
+        description: "IDs of prosecutors assigned to the case"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Prosecutor IDs"
+      defenseAttorneyIds:
+        description: "IDs of defense attorneys assigned to the case"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Defense Attorney IDs"
+      defendantIds:
+        description: "IDs of defendants in the case"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Defendant IDs"
+      plaintiffIds:
+        description: "IDs of plaintiffs in the case"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Plaintiff IDs"
+      victimIds:
+        description: "IDs of victims in the case"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Victim IDs"
+      witnessIds:
+        description: "IDs of witnesses in the case"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Witness IDs"
+      juryId:
+        description: "ID of the jury assigned to the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Jury ID"
+      clerkId:
+        description: "ID of the clerk assigned to the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Clerk ID"
+      bailiffId:
+        description: "ID of the bailiff assigned to the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Bailiff ID"
+      reporterId:
+        description: "ID of the court reporter assigned to the case"
+        type: string
+        x-form-field: true
+        x-field-label: "Reporter ID"
+      hearingDates:
+        description: "Dates of scheduled hearings"
+        type: array
+        items:
+          type: string
+          format: date-time
+        x-form-field: true
+        x-field-label: "Hearing Dates"
+      verdict:
+        description: "Verdict of the case if concluded"
+        type: string
+        x-form-field: true
+        x-field-label: "Verdict"
+      sentenceDetails:
+        description: "Details of the sentence if applicable"
+        type: string
+        x-form-field: true
+        x-field-label: "Sentence Details"
+    type: object
+    required:
+      - caseNumber
+      - title
+      - type
+      - filingDate
+      - courtId

@@ -1,0 +1,49 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="reporters")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - $ref: '../common/Person.yaml'
+  - properties:
+      certificationNumber:
+        description: "Court reporter's certification number"
+        type: string
+        x-form-field: true
+        x-field-label: "Certification Number"
+      email:
+        description: "Reporter's email address"
+        type: string
+        format: email
+        x-form-field: true
+        x-field-label: "Email Address"
+      phoneNumber:
+        $ref: '../common/Phone.yaml'
+      courtId:
+        description: "ID of the court the reporter is associated with"
+        type: string
+        x-form-field: true
+        x-field-label: "Court ID"
+      yearsOfExperience:
+        description: "Number of years of experience as a court reporter"
+        type: integer
+        minimum: 0
+        x-form-field: true
+        x-field-label: "Years of Experience"
+      specializations:
+        description: "Areas of specialization or expertise"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Specializations"
+      transcriptionRate:
+        description: "Rate charged per page for transcription services"
+        type: number
+        format: double
+        minimum: 0
+        x-form-field: true
+        x-field-label: "Transcription Rate"
+    type: object
+    required:
+      - certificationNumber

@@ -1,0 +1,179 @@
+get:
+  tags:
+    - Victim
+  summary: Get victim by id
+  description: Retrieves detailed information for a specific victim identified by the provided ID.
+  operationId: getVictimById
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the victim for which you want to retrieve the data."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - read:victims
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the victim information for the specified ID.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Victim.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access this victim's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified victim was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Victim
+  summary: Update victim data
+  description: "This operation allows updating the information in a victim profile. The update can only be performed by users with appropriate permissions."
+  operationId: updateVictim
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the victim profile to be updated."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'write:victims'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Victim.yaml'
+    description: Updated victim information including personal details, injury description, and other relevant data.
+    required: true
+  responses:
+    '200':
+      description: Successfully updated the victim profile. Returns the updated victim object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Victim.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid victim data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this victim's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified victim was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - The update would result in a conflict with existing data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Victim
+  summary: Delete a victim
+  description: "This operation permanently deletes all data associated with the requested victim ID. Only users with appropriate permissions can perform this operation."
+  operationId: deleteVictim
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the victim profile to be deleted."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this victim.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified victim was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:victims'
+        - 'write:victims'
+    - api_key: [ ]
+description: Victim APIs

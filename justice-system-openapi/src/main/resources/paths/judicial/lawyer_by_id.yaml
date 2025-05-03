@@ -1,0 +1,179 @@
+get:
+  tags:
+    - Lawyer
+  summary: Get lawyer by id
+  description: Retrieves detailed information for a specific lawyer identified by the provided ID.
+  operationId: getLawyerById
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the lawyer for which you want to retrieve the data."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - read:lawyers
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the lawyer information for the specified ID.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Lawyer.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access this lawyer's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified lawyer was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Lawyer
+  summary: Update lawyer data
+  description: "This operation allows updating the information in a lawyer profile. The update can only be performed by users with appropriate permissions."
+  operationId: updateLawyer
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the lawyer profile to be updated."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'write:lawyers'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Lawyer.yaml'
+    description: Updated lawyer information including personal details, contact information, and other relevant data.
+    required: true
+  responses:
+    '200':
+      description: Successfully updated the lawyer profile. Returns the updated lawyer object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Lawyer.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid lawyer data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this lawyer's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified lawyer was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - The update would result in a conflict with existing data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Lawyer
+  summary: Delete a lawyer
+  description: "This operation permanently deletes all data associated with the requested lawyer ID. Only users with appropriate permissions can perform this operation."
+  operationId: deleteLawyer
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the lawyer profile to be deleted."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this lawyer.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified lawyer was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:lawyers'
+        - 'write:lawyers'
+    - api_key: [ ]
+description: Lawyer APIs

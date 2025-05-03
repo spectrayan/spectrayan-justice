@@ -1,0 +1,12 @@
+type: string
+description: "Assessment of witness credibility"
+enum:
+  - HIGH
+  - MEDIUM
+  - LOW
+  - UNKNOWN
+default: UNKNOWN
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Credibility"

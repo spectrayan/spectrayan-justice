@@ -1,0 +1,179 @@
+get:
+  tags:
+    - Plaintiff
+  summary: Get plaintiff by id
+  description: Retrieves detailed information for a specific plaintiff identified by the provided ID.
+  operationId: getPlaintiffById
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the plaintiff for which you want to retrieve the data."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - read:plaintiffs
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the plaintiff information for the specified ID.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Plaintiff.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access this plaintiff's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified plaintiff was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Plaintiff
+  summary: Update plaintiff data
+  description: "This operation allows updating the information in a plaintiff profile. The update can only be performed by users with appropriate permissions."
+  operationId: updatePlaintiff
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the plaintiff profile to be updated."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'write:plaintiffs'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Plaintiff.yaml'
+    description: Updated plaintiff information including personal details, claim description, and other relevant data.
+    required: true
+  responses:
+    '200':
+      description: Successfully updated the plaintiff profile. Returns the updated plaintiff object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Plaintiff.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid plaintiff data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this plaintiff's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified plaintiff was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - The update would result in a conflict with existing data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Plaintiff
+  summary: Delete a plaintiff
+  description: "This operation permanently deletes all data associated with the requested plaintiff ID. Only users with appropriate permissions can perform this operation."
+  operationId: deletePlaintiff
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the plaintiff profile to be deleted."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this plaintiff.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified plaintiff was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:plaintiffs'
+        - 'write:plaintiffs'
+    - api_key: [ ]
+description: Plaintiff APIs

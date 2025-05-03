@@ -1,0 +1,13 @@
+type: string
+description: "Type of court (e.g., Supreme, District, Federal)"
+enum:
+  - SUPREME
+  - DISTRICT
+  - FEDERAL
+  - APPELLATE
+  - MUNICIPAL
+  - STATE
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Court Type"

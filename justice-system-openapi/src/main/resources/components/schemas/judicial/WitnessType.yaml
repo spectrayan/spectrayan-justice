@@ -1,0 +1,12 @@
+type: string
+description: "Type of witness"
+enum:
+  - EYEWITNESS
+  - CHARACTER
+  - EXPERT
+  - FACT
+  - HOSTILE
+x-form-field: true
+x-form-embedded: true
+x-form-select: true
+x-field-label: "Witness Type"

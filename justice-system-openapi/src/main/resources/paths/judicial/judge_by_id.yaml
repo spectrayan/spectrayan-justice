@@ -1,0 +1,199 @@
+get:
+  tags:
+    - Judge
+  summary: Get judge by id
+  description: |
+    Retrieves detailed information for a specific judge identified by the provided ID.
+    The judge must belong to the specified tenant.
+  operationId: getJudgeById
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the judge for which you want to retrieve the data."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - read:judges
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the judge information for the specified ID.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Judge.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access this judge's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified property-owner or judge was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Judge
+  summary: Update judge data
+  description: "This operation allows updating the information in a judge profile. The update can only be performed by the logged in judge or by users with appropriate permissions."
+  operationId: updateJudge
+  parameters:
+    - name: id
+      in: path
+      description: "The unique identifier of the judge profile to be updated."
+      required: true
+      schema:
+        type: string
+  security:
+    - main_auth:
+        - 'write:judges'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Judge.yaml'
+      application/xml:
+        schema:
+          $ref: '../../components/schemas/judicial/Judge.yaml'
+    description: Updated judge information including personal details, contact information, and other relevant data.
+    required: true
+  responses:
+    '200':
+      description: Successfully updated the judge profile. Returns a confirmation with status and message.
+      content:
+        application/json:
+          example:
+            status: 200
+            message: OK
+    '400':
+      description: Bad Request - The request was malformed or contained invalid judge data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this judge's information.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified property-owner or judge was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '405':
+      description: Method Not Allowed - The requested method is not supported for this resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - The update would result in a conflict with existing data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Admin
+  summary: Delete a judge
+  description: "This operation permanently deletes all data associated with the requested judge ID. Only administrators with appropriate permissions can perform this operation."
+  operationId: deleteJudge
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the judge profile to be deleted."
+      example: John78
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this judge.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified property-owner or judge was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '405':
+      description: Method Not Allowed - The requested method is not supported for this resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:judges'
+        - 'write:judges'
+    - api_key: [ ]
+description: Judge APIs
+
