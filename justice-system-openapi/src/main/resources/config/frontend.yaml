@@ -1,8 +1,8 @@
 generatorName: typescript-angular
-outputDir: ../forms-web/src/app/generated
+outputDir: ../justice-system-web/src/app/generated
 inputSpec: '/src/main/resources/justice-system-v1.yaml'
 generateApis: false
-templateDir: forms-openapi/src/main/resources/templates
+templateDir: justice-system-openapi/src/main/resources/templates
 typeMappings:
   DateTime: "Date"
   Date: "Date"

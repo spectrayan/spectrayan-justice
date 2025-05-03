@@ -60,3 +60,4 @@ venv/
 env/
 .env
 .python-version
+!/justice-system-web/src/app/generated/.openapi-generator/

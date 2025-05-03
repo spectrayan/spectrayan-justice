@@ -139,7 +139,7 @@
                                 <configuration>
                                     <inputSpec>${project.basedir}/src/main/resources/justice-system-v1.yaml</inputSpec>
                                     <generatorName>custom-typescript-angular</generatorName>
-                                    <output>../forms-web/src/app/generated</output>
+                                    <output>../justice-system-web/src/app/generated</output>
                                     <generateApis>false</generateApis>
                                     <generateModelTests>false</generateModelTests>
                                     <configurationFile>${project.basedir}/src/main/resources/config/frontend.yaml</configurationFile>
@@ -195,7 +195,7 @@
                                 <configuration>
                                     <inputSpec>${project.basedir}/src/main/resources/justice-system-v1.yaml</inputSpec>
                                     <generatorName>custom-typescript-angular</generatorName>
-                                    <output>../forms-web/src/app/generated</output>
+                                    <output>../justice-system-web/src/app/generated</output>
                                     <generateApis>false</generateApis>
                                     <generateModelTests>false</generateModelTests>
                                     <configurationFile>${project.basedir}/src/main/resources/config/frontend-models.yaml</configurationFile>
