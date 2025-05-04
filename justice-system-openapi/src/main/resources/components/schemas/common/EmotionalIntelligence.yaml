@@ -1,0 +1,81 @@
+type: object
+description: "Person's emotional intelligence assessment."
+x-form-data: true
+properties:
+  selfAwareness:
+    type: integer
+    description: "Score for self-awareness (1-100). Measures ability to recognize and understand one's own emotions."
+    minimum: 1
+    maximum: 100
+    example: 85
+    x-form-field: true
+    x-field-label: "Self-Awareness Score"
+  selfRegulation:
+    type: integer
+    description: "Score for self-regulation (1-100). Measures ability to control and redirect disruptive emotions."
+    minimum: 1
+    maximum: 100
+    example: 78
+    x-form-field: true
+    x-field-label: "Self-Regulation Score"
+  motivation:
+    type: integer
+    description: "Score for motivation (1-100). Measures passion to work for reasons beyond money or status."
+    minimum: 1
+    maximum: 100
+    example: 82
+    x-form-field: true
+    x-field-label: "Motivation Score"
+  empathy:
+    type: integer
+    description: "Score for empathy (1-100). Measures ability to understand the emotional makeup of other people."
+    minimum: 1
+    maximum: 100
+    example: 90
+    x-form-field: true
+    x-field-label: "Empathy Score"
+  socialSkills:
+    type: integer
+    description: "Score for social skills (1-100). Measures proficiency in managing relationships and building networks."
+    minimum: 1
+    maximum: 100
+    example: 75
+    x-form-field: true
+    x-field-label: "Social Skills Score"
+  overallEQScore:
+    type: integer
+    description: "Overall emotional intelligence quotient (EQ) score (1-100)."
+    minimum: 1
+    maximum: 100
+    example: 82
+    x-form-field: true
+    x-field-label: "Overall EQ Score"
+  emotionalStrengths:
+    type: array
+    description: "List of emotional strengths."
+    items:
+      type: string
+      example: "Conflict Resolution"
+    x-form-field: true
+    x-field-label: "Emotional Strengths"
+  emotionalWeaknesses:
+    type: array
+    description: "List of emotional weaknesses or areas for improvement."
+    items:
+      type: string
+      example: "Patience under pressure"
+    x-form-field: true
+    x-field-label: "Emotional Weaknesses"
+  assessmentDate:
+    type: string
+    format: date
+    description: "The date when the emotional intelligence assessment was conducted."
+    example: "2023-06-20"
+    x-form-field: true
+    x-field-label: "Assessment Date"
+required:
+  - selfAwareness
+  - selfRegulation
+  - motivation
+  - empathy
+  - socialSkills

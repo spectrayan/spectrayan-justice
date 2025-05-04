@@ -1,0 +1,11 @@
+type: string
+description: "Size of social network."
+enum:
+  - Very Small
+  - Small
+  - Medium
+  - Large
+  - Very Large
+x-form-field: true
+x-form-select: true
+x-field-label: "Social Network Size"

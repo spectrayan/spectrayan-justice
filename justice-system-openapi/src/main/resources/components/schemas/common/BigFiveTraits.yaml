@@ -1,0 +1,62 @@
+type: object
+x-form-data: true
+properties:
+  openness:
+    type: integer
+    description: "Score for openness to experience (1-100). Higher scores indicate greater openness to new experiences, creativity, and intellectual curiosity."
+    minimum: 1
+    maximum: 100
+    example: 75
+    x-form-field: true
+    x-field-label: "Openness Score"
+  conscientiousness:
+    type: integer
+    description: "Score for conscientiousness (1-100). Higher scores indicate greater organization, responsibility, and self-discipline."
+    minimum: 1
+    maximum: 100
+    example: 82
+    x-form-field: true
+    x-field-label: "Conscientiousness Score"
+  extraversion:
+    type: integer
+    description: "Score for extraversion (1-100). Higher scores indicate greater sociability, assertiveness, and energy."
+    minimum: 1
+    maximum: 100
+    example: 60
+    x-form-field: true
+    x-field-label: "Extraversion Score"
+  agreeableness:
+    type: integer
+    description: "Score for agreeableness (1-100). Higher scores indicate greater compassion, cooperation, and consideration for others."
+    minimum: 1
+    maximum: 100
+    example: 70
+    x-form-field: true
+    x-field-label: "Agreeableness Score"
+  neuroticism:
+    type: integer
+    description: "Score for neuroticism (1-100). Higher scores indicate greater emotional instability and tendency toward negative emotions."
+    minimum: 1
+    maximum: 100
+    example: 45
+    x-form-field: true
+    x-field-label: "Neuroticism Score"
+  assessmentDate:
+    type: string
+    format: date
+    description: "The date when the Big Five traits assessment was conducted."
+    example: "2023-05-15"
+    x-form-field: true
+    x-field-label: "Assessment Date"
+  assessmentMethod:
+    type: string
+    description: "The method or tool used to assess the Big Five traits."
+    example: "NEO Personality Inventory"
+    x-form-field: true
+    x-field-label: "Assessment Method"
+required:
+  - openness
+  - conscientiousness
+  - extraversion
+  - agreeableness
+  - neuroticism

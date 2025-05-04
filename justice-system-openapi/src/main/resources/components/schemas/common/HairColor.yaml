@@ -1,0 +1,13 @@
+type: string
+description: "Hair color."
+enum:
+  - Black
+  - Brown
+  - Blonde
+  - Red
+  - Gray
+  - White
+  - Other
+x-form-field: true
+x-form-select: true
+x-field-label: "Hair Color"

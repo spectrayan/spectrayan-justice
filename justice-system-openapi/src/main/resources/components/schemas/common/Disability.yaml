@@ -1,0 +1,53 @@
+type: object
+description: "Person's disabilities and accessibility needs."
+x-form-data: true
+properties:
+  disabilityType:
+    type: array
+    description: "Types of disabilities the person has."
+    items:
+      type: string
+      example: "Mobility impairment"
+    x-form-field: true
+    x-field-label: "Disability Types"
+  accessibilityNeeds:
+    type: array
+    description: "Specific accessibility requirements or accommodations needed."
+    items:
+      type: string
+      example: "Wheelchair ramp"
+    x-form-field: true
+    x-field-label: "Accessibility Needs"
+  copingStrategies:
+    type: array
+    description: "Strategies used to cope with the disability."
+    items:
+      type: string
+      example: "Assistive technology"
+    x-form-field: true
+    x-field-label: "Coping Strategies"
+  impactOnDailyLife:
+    type: string
+    description: "Description of how the disability affects daily activities."
+    x-form-field: true
+    x-field-label: "Impact On Daily Life"
+  assistiveTechnology:
+    type: array
+    description: "Assistive devices or technology used."
+    items:
+      type: string
+      example: "Screen reader"
+    x-form-field: true
+    x-field-label: "Assistive Technology"
+  accommodationHistory:
+    type: string
+    description: "History of accommodations provided in various settings."
+    x-form-field: true
+    x-field-label: "Accommodation History"
+  disabilityNotes:
+    type: string
+    description: "Additional notes about the disability."
+    x-form-field: true
+    x-field-label: "Disability Notes"
+required:
+  - disabilityType

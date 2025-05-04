@@ -1,0 +1,55 @@
+type: object
+description: "Person's social behavior patterns."
+x-form-data: true
+properties:
+  communicationStyle:
+    $ref: 'CommunicationStyle.yaml'
+  socialNetworkSize:
+    $ref: 'SocialNetworkSize.yaml'
+  conflictResolutionStyle:
+    $ref: 'ConflictResolutionStyle.yaml'
+  leadershipStyle:
+    $ref: 'LeadershipStyle.yaml'
+  teamworkAbility:
+    type: integer
+    description: "Score for ability to work in teams (1-100)."
+    minimum: 1
+    maximum: 100
+    example: 85
+    x-form-field: true
+    x-field-label: "Teamwork Ability Score"
+  socialInfluence:
+    type: integer
+    description: "Score for ability to influence others (1-100)."
+    minimum: 1
+    maximum: 100
+    example: 75
+    x-form-field: true
+    x-field-label: "Social Influence Score"
+  trustLevel:
+    $ref: 'TrustLevel.yaml'
+  socialAdaptability:
+    type: integer
+    description: "Score for adaptability in social situations (1-100)."
+    minimum: 1
+    maximum: 100
+    example: 80
+    x-form-field: true
+    x-field-label: "Social Adaptability Score"
+  culturalSensitivity:
+    type: integer
+    description: "Score for sensitivity to cultural differences (1-100)."
+    minimum: 1
+    maximum: 100
+    example: 90
+    x-form-field: true
+    x-field-label: "Cultural Sensitivity Score"
+  socialBehaviorNotes:
+    type: string
+    description: "Additional notes about social behavior."
+    x-form-field: true
+    x-field-label: "Social Behavior Notes"
+required:
+  - communicationStyle
+  - conflictResolutionStyle
+  - teamworkAbility

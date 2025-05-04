@@ -1,0 +1,55 @@
+type: object
+description: "Person's physical characteristics."
+x-form-data: true
+properties:
+  height:
+    type: number
+    format: float
+    description: "Height in centimeters."
+    example: 175.5
+    x-form-field: true
+    x-field-label: "Height (cm)"
+  weight:
+    type: number
+    format: float
+    description: "Weight in kilograms."
+    example: 70.3
+    x-form-field: true
+    x-field-label: "Weight (kg)"
+  eyeColor:
+    $ref: 'EyeColor.yaml'
+  hairColor:
+    $ref: 'HairColor.yaml'
+  bloodType:
+    $ref: 'BloodType.yaml'
+  distinguishingFeatures:
+    type: array
+    description: "List of distinguishing physical features."
+    items:
+      type: string
+      example: "Scar on left cheek"
+    x-form-field: true
+    x-field-label: "Distinguishing Features"
+  physicalCondition:
+    $ref: 'PhysicalCondition.yaml'
+  disabilities:
+    type: array
+    description: "List of physical disabilities, if any."
+    items:
+      type: string
+      example: "Partial hearing loss"
+    x-form-field: true
+    x-field-label: "Disabilities"
+  medicalConditions:
+    type: array
+    description: "List of medical conditions, if any."
+    items:
+      type: string
+      example: "Asthma"
+    x-form-field: true
+    x-field-label: "Medical Conditions"
+required:
+  - height
+  - weight
+  - eyeColor
+  - hairColor

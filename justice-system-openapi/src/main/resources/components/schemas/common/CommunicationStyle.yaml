@@ -1,0 +1,11 @@
+type: string
+description: "Primary communication style."
+enum:
+  - Assertive
+  - Passive
+  - Aggressive
+  - Passive-Aggressive
+  - Diplomatic
+x-form-field: true
+x-form-select: true
+x-field-label: "Communication Style"

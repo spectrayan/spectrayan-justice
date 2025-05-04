@@ -1,0 +1,12 @@
+type: string
+description: "Leadership style in group settings."
+enum:
+  - Autocratic
+  - Democratic
+  - Laissez-faire
+  - Transformational
+  - Servant
+  - Transactional
+x-form-field: true
+x-form-select: true
+x-field-label: "Leadership Style"

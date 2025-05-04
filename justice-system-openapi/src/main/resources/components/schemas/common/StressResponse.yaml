@@ -1,0 +1,10 @@
+type: string
+description: "Typical response to stressful situations."
+enum:
+  - Fight
+  - Flight
+  - Freeze
+  - Fawn
+x-form-field: true
+x-form-select: true
+x-field-label: "Stress Response"

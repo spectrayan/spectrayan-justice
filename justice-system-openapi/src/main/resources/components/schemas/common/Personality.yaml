@@ -1,0 +1,34 @@
+type: object
+description: "Person's personality traits and characteristics."
+x-form-data: true
+properties:
+  personalityType:
+    $ref: 'PersonalityType.yaml'
+  bigFiveTraits:
+    $ref: 'BigFiveTraits.yaml'
+    description: "The Big Five personality traits assessment."
+  dominantTraits:
+    type: array
+    description: "List of dominant personality traits."
+    items:
+      type: string
+      example: "Conscientious"
+    x-form-field: true
+    x-field-label: "Dominant Traits"
+  adaptability:
+    type: integer
+    description: "Score representing adaptability to new situations (1-10)."
+    minimum: 1
+    maximum: 10
+    example: 7
+    x-form-field: true
+    x-field-label: "Adaptability Score"
+  stressResponse:
+    $ref: 'StressResponse.yaml'
+  personalityNotes:
+    type: string
+    description: "Additional notes about the person's personality."
+    x-form-field: true
+    x-field-label: "Personality Notes"
+required:
+  - personalityType

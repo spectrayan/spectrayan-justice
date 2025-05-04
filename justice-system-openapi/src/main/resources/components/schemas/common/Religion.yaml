@@ -1,0 +1,16 @@
+type: string
+description: "The person's religious affiliation."
+enum:
+  - Christianity
+  - Islam
+  - Hinduism
+  - Buddhism
+  - Judaism
+  - Sikhism
+  - Atheism
+  - Agnosticism
+  - Other
+  - Decline To Identify
+x-form-field: true
+x-form-select: true
+x-field-label: "Religion"

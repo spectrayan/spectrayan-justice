@@ -1,0 +1,11 @@
+type: string
+description: "General level of trust in others."
+enum:
+  - Very Low
+  - Low
+  - Moderate
+  - High
+  - Very High
+x-form-field: true
+x-form-select: true
+x-field-label: "Trust Level"

@@ -1,0 +1,14 @@
+type: string
+description: "The person's racial identity."
+enum:
+  - Asian
+  - Black or African American
+  - Native American or Alaska Native
+  - Native Hawaiian or Other Pacific Islander
+  - White
+  - Multiple Races
+  - Other
+  - Decline To Identify
+x-form-field: true
+x-form-select: true
+x-field-label: "Race"

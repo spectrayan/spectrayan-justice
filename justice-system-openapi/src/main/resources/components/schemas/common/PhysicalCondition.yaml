@@ -1,0 +1,10 @@
+type: string
+description: "Overall physical condition."
+enum:
+  - Excellent
+  - Good
+  - Fair
+  - Poor
+x-form-field: true
+x-form-select: true
+x-field-label: "Physical Condition"

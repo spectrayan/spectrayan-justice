@@ -1,0 +1,13 @@
+type: string
+description: "Eye color."
+enum:
+  - Brown
+  - Blue
+  - Green
+  - Hazel
+  - Gray
+  - Amber
+  - Other
+x-form-field: true
+x-form-select: true
+x-field-label: "Eye Color"

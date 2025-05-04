@@ -1,0 +1,11 @@
+type: string
+description: "Approach to resolving conflicts."
+enum:
+  - Avoiding
+  - Accommodating
+  - Compromising
+  - Competing
+  - Collaborating
+x-form-field: true
+x-form-select: true
+x-field-label: "Conflict Resolution Style"

@@ -1,0 +1,9 @@
+type: string
+description: "The person's personality type classification."
+enum:
+  - Introvert
+  - Extrovert
+  - Ambivert
+x-form-field: true
+x-form-select: true
+x-field-label: "Personality Type"

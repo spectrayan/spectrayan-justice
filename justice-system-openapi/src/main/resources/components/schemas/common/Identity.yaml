@@ -1,0 +1,53 @@
+type: object
+description: "Person's demographic information including race, ethnicity, religion, etc."
+x-form-data: true
+properties:
+  race:
+    $ref: 'Race.yaml'
+  ethnicity:
+    type: string
+    description: "The person's ethnic background."
+    example: "Hispanic or Latino"
+    x-form-field: true
+    x-field-label: "Ethnicity"
+  religion:
+    $ref: 'Religion.yaml'
+  creed:
+    type: string
+    description: "The person's system of beliefs or principles."
+    example: "Humanist"
+    x-form-field: true
+    x-field-label: "Creed"
+  culture:
+    type: string
+    description: "The person's cultural background or identity."
+    example: "Japanese-American"
+    x-form-field: true
+    x-field-label: "Culture"
+  caste:
+    type: string
+    description: "The person's caste identification, if applicable."
+    example: "N/A"
+    x-form-field: true
+    x-field-label: "Caste"
+  language:
+    type: string
+    description: "The person's primary language."
+    example: "English"
+    x-form-field: true
+    x-field-label: "Language"
+  color:
+    type: string
+    description: "The person's skin color."
+    example: "Brown"
+    x-form-field: true
+    x-field-label: "Color"
+  nationality:
+    type: string
+    description: "The person's nationality."
+    example: "American"
+    x-form-field: true
+    x-field-label: "Nationality"
+required:
+  - race
+  - ethnicity

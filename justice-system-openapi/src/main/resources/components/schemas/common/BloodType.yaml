@@ -1,0 +1,15 @@
+type: string
+description: "Blood type."
+enum:
+  - A+
+  - A-
+  - B+
+  - B-
+  - AB+
+  - AB-
+  - O+
+  - O-
+  - Unknown
+x-form-field: true
+x-form-select: true
+x-field-label: "Blood Type"
