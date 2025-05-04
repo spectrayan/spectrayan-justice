@@ -1,0 +1,43 @@
+IN THE SUPREME COURT OF THE UNITED STATES
+
+JOHN DOE, Petitioner
+v.
+ACME CORPORATION, Respondent
+
+On Writ of Certiorari to the United States Court of Appeals for the Ninth Circuit
+
+BRIEF FOR PETITIONER
+
+STATEMENT OF THE CASE
+
+This case concerns a dispute between John Doe, an individual consumer, and Acme Corporation, a manufacturer of consumer products. On January 1, 2023, Mr. Doe purchased a product manufactured by Acme Corporation. The product malfunctioned, causing damage to Mr. Doe's property and resulting in personal injury.
+
+Mr. Doe filed suit in the United States District Court for the Northern District of California, alleging negligence, strict product liability, and breach of warranty. The District Court granted summary judgment in favor of Acme Corporation. The United States Court of Appeals for the Ninth Circuit affirmed.
+
+The question presented is whether a manufacturer can be held liable for defects in a product that were not discoverable given the state of scientific knowledge at the time of manufacture.
+
+ARGUMENT
+
+I. The Court of Appeals erred in applying the state-of-the-art defense to strict product liability claims.
+
+The state-of-the-art defense should not apply to strict product liability claims because it undermines the fundamental purpose of strict liability, which is to place the burden of defective products on manufacturers rather than consumers.
+
+II. Even if the state-of-the-art defense applies, Acme Corporation had knowledge of potential defects.
+
+Evidence in the record demonstrates that Acme Corporation was aware of potential defects in the product design but failed to conduct adequate testing before bringing the product to market.
+
+CONCLUSION
+
+For the foregoing reasons, the judgment of the Court of Appeals should be reversed.
+
+Respectfully submitted,
+
+Jane Smith
+Counsel of Record
+SMITH & ASSOCIATES
+123 Legal Street
+San Francisco, CA 94111
+(555) 123-4567
+jsmith@smithlaw.com
+
+January 15, 2023

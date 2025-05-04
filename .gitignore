@@ -61,3 +61,4 @@ env/
 .env
 .python-version
 !/justice-system-web/src/app/generated/.openapi-generator/
+!/justice-system-ai/src/generated/.openapi-generator/

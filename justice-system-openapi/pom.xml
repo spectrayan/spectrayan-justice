@@ -236,7 +236,7 @@
             </build>
         </profile>
         <profile>
-            <id>python-server</id>
+            <id>python-models</id>
             <build>
                 <plugins>
                     <plugin>
@@ -250,17 +250,18 @@
                                 </goals>
                                 <configuration>
                                     <skipValidateSpec>false</skipValidateSpec>
-                                    <inputSpec>${project.basedir}/src/main/resources/justice-system.yaml</inputSpec>
-                                    <generatorName>python-flask</generatorName>
-                                    <output>${project.basedir}/../justice-system-api</output>
-                                    <cleanupOutput>true</cleanupOutput>
-                                    <generateSupportingFiles>true</generateSupportingFiles>
+                                    <inputSpec>${project.basedir}/src/main/resources/justice-system-v1.yaml</inputSpec>
+                                    <generatorName>python</generatorName>
+                                    <output>${project.basedir}/../justice-system-ai/src/generated</output>
+                                    <cleanupOutput>false</cleanupOutput>
+                                    <generateSupportingFiles>false</generateSupportingFiles>
+                                    <generateApis>false</generateApis>
+                                    <generateModelTests>false</generateModelTests>
                                     <globalProperties>
                                         <debugOpenAPI>true</debugOpenAPI>
                                     </globalProperties>
                                     <configOptions>
-                                        <fastapiImplementationPackage>justice-system_api</fastapiImplementationPackage>
-                                        <packageName>justice-system_api</packageName>
+                                        <packageName>justice_system</packageName>
                                         <packageVersion>1.0.0</packageVersion>
                                         <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                     </configOptions>

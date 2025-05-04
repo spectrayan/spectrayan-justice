@@ -1,0 +1,47 @@
+[build-system]
+requires = ["uv"]
+build-backend = "uv.build"
+
+[tool.uv]
+package-dir = "src"
+
+[project]
+name = "justice_system"
+version = "0.1.0"
+description = "Justice System AI"
+authors = [
+    {name = "Spectrayan Justice Team"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+justice-system = "justice_system.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.0.0",
+    "mypy>=1.0.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
