@@ -1,4 +1,6 @@
-# JusticeSystemWeb
+# Justice System Web
+
+This is the web frontend for the Spectrayan Justice System project. It provides a user interface for interacting with the justice system APIs and visualizing data.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
 
@@ -53,6 +55,47 @@ ng e2e
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Key Features
+
+- **User Interface for Justice System**: Provides interfaces for managing cases, evidence, and judicial entities
+- **Generated Components**: Uses automatically generated Angular components based on OpenAPI specifications
+- **Form Components**: Includes form components for data entry and editing
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Integration with Other Modules
+
+This module integrates with other parts of the Spectrayan Justice System:
+
+- **justice-system-openapi**: The OpenAPI module generates TypeScript models, interfaces, and Angular form components in the `src/app/generated` directory. These are used to ensure type safety and consistent data structures.
+
+- **justice-system-ai**: Communicates with the AI module through the API to leverage AI-powered features.
+
+### Generating Angular Components
+
+To update the generated components after changes to the OpenAPI specifications:
+
+```bash
+# From the project root
+mvn clean generate-sources -pl justice-system-openapi -am -P custom-frontend
+```
+
+## Project Structure
+
+```
+justice-system-web/
+├── src/
+│   ├── app/
+│   │   ├── components/     # Custom Angular components
+│   │   ├── generated/      # Generated components from OpenAPI
+│   │   │   ├── form-components/  # Generated form components
+│   │   │   └── model/      # Generated TypeScript models
+│   │   ├── pages/          # Page components
+│   │   └── services/       # Angular services
+│   ├── assets/             # Static assets
+│   └── environments/       # Environment configurations
+└── angular.json           # Angular configuration
+```
 
 ## Additional Resources
 

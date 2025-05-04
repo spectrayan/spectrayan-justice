@@ -127,6 +127,11 @@ export interface Case {
         reporterId?: string;
     
         /**
+        * IDs of evidence associated with the case
+        */
+        evidenceIds?: Array<string>;
+    
+        /**
         * Dates of scheduled hearings
         */
         hearingDates?: Array<Date>;
@@ -179,6 +184,8 @@ export type CaseFormType = FormGroup<{
     bailiffId: FormControl<string|null>;
 
     reporterId: FormControl<string|null>;
+
+    evidenceIds: FormControl<Array<string>|null>;
 
     hearingDates: FormControl<Array<Date>|null>;
 
@@ -263,6 +270,10 @@ export function getCaseForm(): CaseFormType {
     
 
     reporterId: new FormControl<string>("", {  nonNullable:   false ,
+    validators: [ ] } ),
+    
+
+    evidenceIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
     
 
@@ -353,6 +364,9 @@ const result: DocumentData = {};
         if (modelObject.reporterId !== undefined) {
                     result['reporterId'] = modelObject.reporterId;
         }
+        if (modelObject.evidenceIds !== undefined) {
+                    result['evidenceIds'] = modelObject.evidenceIds;
+        }
         if (modelObject.hearingDates !== undefined) {
                     result['hearingDates'] = modelObject.hearingDates;
         }
@@ -414,6 +428,8 @@ return {
                     bailiffId: data['bailiffId'],
     
                     reporterId: data['reporterId'],
+    
+                    evidenceIds: data['evidenceIds'],
     
                     hearingDates: data['hearingDates'],
     
