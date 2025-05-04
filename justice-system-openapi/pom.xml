@@ -252,7 +252,7 @@
                                     <skipValidateSpec>false</skipValidateSpec>
                                     <inputSpec>${project.basedir}/src/main/resources/justice-system-v1.yaml</inputSpec>
                                     <generatorName>python</generatorName>
-                                    <output>${project.basedir}/../justice-system-ai/src/generated</output>
+                                    <output>${project.basedir}/../justice-system-ai/src</output>
                                     <cleanupOutput>false</cleanupOutput>
                                     <generateSupportingFiles>false</generateSupportingFiles>
                                     <generateApis>false</generateApis>
@@ -261,7 +261,8 @@
                                         <debugOpenAPI>true</debugOpenAPI>
                                     </globalProperties>
                                     <configOptions>
-                                        <packageName>justice_system</packageName>
+                                        <packageName>generated</packageName>
+                                        <packageUrl>.</packageUrl>
                                         <packageVersion>1.0.0</packageVersion>
                                         <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                     </configOptions>

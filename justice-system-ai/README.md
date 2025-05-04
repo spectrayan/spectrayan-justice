@@ -1,6 +1,6 @@
 # Justice System AI
 
-A Python package providing AI-powered tools and utilities for justice systems.
+A Python package providing AI-powered tools and utilities for justice systems. This module is part of the larger Spectrayan Justice System project and works with models generated from the OpenAPI specifications.
 
 ## Installation
 
@@ -111,6 +111,21 @@ isort src/justice_system
 
 # Type checking
 mypy src/justice_system
+```
+
+## Integration with Other Modules
+
+This module integrates with other parts of the Spectrayan Justice System:
+
+- **justice-system-openapi**: The OpenAPI module generates Python model classes in the `src/generated` directory using the `python-models` Maven profile. These models are used by the AI components to ensure consistent data structures across the system.
+
+- **justice-system-web**: The AI module provides backend processing capabilities that can be called from the web frontend through the API.
+
+To update the generated models after changes to the OpenAPI specifications:
+
+```bash
+# From the project root
+mvn clean generate-sources -pl justice-system-openapi -am -P python-models
 ```
 
 ## License

@@ -1,9 +1,6 @@
 [build-system]
-requires = ["uv"]
-build-backend = "uv.build"
-
-[tool.uv]
-package-dir = "src"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "justice_system"
@@ -19,6 +16,12 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "fastmcp>=2.2.7",
+    "google-adk>=0.4.0",
+    "loguru>=0.7.3",
+    "setuptools>=61.0",
+]
 
 [project.scripts]
 justice-system = "justice_system.cli:main"
@@ -30,6 +33,13 @@ dev = [
     "isort>=5.0.0",
     "mypy>=1.0.0",
 ]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages]
+find = {where = ["src"], include = ["justice_system*", "generated*"]}
+
 
 [tool.black]
 line-length = 88
