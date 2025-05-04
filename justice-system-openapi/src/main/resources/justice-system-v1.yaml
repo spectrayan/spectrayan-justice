@@ -99,3 +99,11 @@ paths:
     $ref: 'paths/judicial/reporters.yaml'
   /v1/reporters/{id}:
     $ref: 'paths/judicial/reporter_by_id.yaml'
+
+  # Evidence APIs start
+  /v1/evidences:
+    $ref: 'paths/judicial/evidences.yaml'
+  /v1/evidences/{id}:
+    $ref: 'paths/judicial/evidence_by_id.yaml'
+  /v1/cases/{caseId}/evidences:
+    $ref: 'paths/judicial/evidences_by_case_id.yaml'

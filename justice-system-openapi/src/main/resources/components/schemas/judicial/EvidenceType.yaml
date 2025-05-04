@@ -1,0 +1,14 @@
+type: string
+description: "Type of evidence"
+enum:
+  - PHYSICAL
+  - DOCUMENTARY
+  - TESTIMONIAL
+  - DIGITAL
+  - FORENSIC
+  - DEMONSTRATIVE
+  - CIRCUMSTANTIAL
+  - DIRECT
+  - OTHER
+x-form-field: true
+x-field-label: "Evidence Type"

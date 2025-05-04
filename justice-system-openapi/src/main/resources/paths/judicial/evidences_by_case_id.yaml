@@ -1,0 +1,65 @@
+get:
+  tags:
+    - Evidence
+  summary: Get evidences by case ID
+  description: Retrieves all evidences associated with a specific case.
+  operationId: getEvidencesByCaseId
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: caseId
+      in: path
+      description: "The unique identifier of the case to retrieve evidences for."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successfully retrieved the evidences for the specified case.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Evidence.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:evidences'
+        - 'read:cases'
+    - api_key: [ ]
+description: Evidence APIs

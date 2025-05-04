@@ -1,0 +1,104 @@
+get:
+  tags:
+    - Evidence
+  summary: Get all evidences
+  description: Retrieves a list of all evidences. The response is paginated.
+  operationId: getEvidences
+  x-spring-paginated: true
+  security:
+    - main_auth:
+        - read:evidences
+    - api_key: [ ]
+  responses:
+    '200':
+      description: Successfully retrieved the list of evidences.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/schemas/judicial/Evidence.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+post:
+  tags:
+    - Evidence
+  summary: Create new evidence
+  description: Creates a new evidence record. The evidence information is provided in the request body.
+  operationId: createEvidence
+  security:
+    - main_auth:
+        - write:evidences
+    - api_key: [ ]
+  requestBody:
+    description: Evidence information to be created.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Evidence.yaml'
+  responses:
+    '200':
+      description: Successfully created the evidence record. Returns the created evidence object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Evidence.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid evidence data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to create evidences.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '409':
+      description: Conflict - An evidence with the same identifying information already exists.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+description: Evidence APIs
+x-content-type: application/json
+x-accepts:
+    - application/json
+x-tags:
+    - tag: Evidence

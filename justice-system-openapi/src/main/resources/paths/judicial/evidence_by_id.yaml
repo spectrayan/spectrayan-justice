@@ -1,0 +1,180 @@
+get:
+  tags:
+    - Evidence
+  summary: Get evidence by ID
+  description: Retrieves a specific evidence by its unique identifier.
+  operationId: getEvidenceById
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the evidence to retrieve."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successfully retrieved the evidence.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Evidence.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified evidence was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+put:
+  tags:
+    - Evidence
+  summary: Update evidence
+  description: Updates an existing evidence with the provided information.
+  operationId: updateEvidence
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the evidence to update."
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Updated evidence information.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/judicial/Evidence.yaml'
+  responses:
+    '200':
+      description: Successfully updated the evidence. Returns the updated evidence object.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/judicial/Evidence.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid evidence data.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to update this evidence.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified evidence was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+delete:
+  tags:
+    - Evidence
+  summary: Delete an evidence
+  description: "This operation permanently deletes all data associated with the requested evidence ID. Only administrators with appropriate permissions can perform this operation."
+  operationId: deleteEvidence
+  parameters:
+    - name: api_key
+      in: header
+      required: false
+      description: "API key for authentication."
+      schema:
+        type: string
+        example: 'Bearer <TOKEN>'
+    - name: id
+      in: path
+      description: "The unique identifier of the evidence to be deleted."
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      $ref: '../../components/schemas/common/Success.yaml'
+    '400':
+      description: Bad Request - The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '401':
+      description: Unauthorized - Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '403':
+      description: Forbidden - The authenticated user does not have permission to delete this evidence.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '404':
+      description: Not Found - The specified evidence was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+    '500':
+      description: Internal Server Error - An unexpected error occurred while processing the request.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/common/ProblemDetail.json'
+  security:
+    - main_auth:
+        - 'read:evidences'
+        - 'write:evidences'
+    - api_key: [ ]
+description: Evidence APIs

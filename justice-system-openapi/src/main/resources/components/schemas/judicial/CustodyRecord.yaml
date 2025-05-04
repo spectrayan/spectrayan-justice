@@ -1,0 +1,39 @@
+type: object
+description: "Record of evidence custody transfer"
+x-form-data: true
+properties:
+  transferDate:
+    description: "Date and time of custody transfer"
+    type: string
+    format: date-time
+    x-form-field: true
+    x-field-label: "Transfer Date"
+  fromPersonId:
+    description: "ID of the person transferring custody"
+    type: string
+    x-form-field: true
+    x-field-label: "From Person ID"
+  toPersonId:
+    description: "ID of the person receiving custody"
+    type: string
+    x-form-field: true
+    x-field-label: "To Person ID"
+  reason:
+    description: "Reason for the custody transfer"
+    type: string
+    x-form-field: true
+    x-field-label: "Reason"
+  location:
+    description: "Location where the transfer occurred"
+    type: string
+    x-form-field: true
+    x-field-label: "Location"
+  notes:
+    description: "Additional notes about the transfer"
+    type: string
+    x-form-field: true
+    x-field-label: "Notes"
+required:
+  - transferDate
+  - fromPersonId
+  - toPersonId

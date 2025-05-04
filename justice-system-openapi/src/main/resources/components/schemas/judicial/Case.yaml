@@ -102,6 +102,13 @@ allOf:
         type: string
         x-form-field: true
         x-field-label: "Reporter ID"
+      evidenceIds:
+        description: "IDs of evidence associated with the case"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Evidence IDs"
       hearingDates:
         description: "Dates of scheduled hearings"
         type: array

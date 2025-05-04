@@ -1,0 +1,174 @@
+x-class-extra-annotation: |- 
+  @com.google.cloud.spring.data.firestore.Document(collectionName="evidences")
+  @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+x-form-data: true
+allOf:
+  - $ref: '../common/BaseModel.yaml'
+  - properties:
+      evidenceNumber:
+        description: "Unique evidence number assigned by the system"
+        type: string
+        x-form-field: true
+        x-field-label: "Evidence Number"
+      name:
+        description: "Name or title of the evidence"
+        type: string
+        x-form-field: true
+        x-field-label: "Evidence Name"
+      description:
+        description: "Detailed description of the evidence"
+        type: string
+        x-form-field: true
+        x-field-label: "Description"
+      type:
+        $ref: 'EvidenceType.yaml'
+      caseId:
+        description: "ID of the case this evidence is associated with"
+        type: string
+        x-form-field: true
+        x-field-label: "Case ID"
+      collectionDate:
+        description: "Date and time the evidence was collected"
+        type: string
+        format: date-time
+        x-form-field: true
+        x-field-label: "Collection Date"
+      collectionLocation:
+        description: "Location where the evidence was collected"
+        type: string
+        x-form-field: true
+        x-field-label: "Collection Location"
+      collectedById:
+        description: "ID of the person who collected the evidence"
+        type: string
+        x-form-field: true
+        x-field-label: "Collected By ID"
+      status:
+        description: "Current status of the evidence (e.g., in custody, analyzed, released)"
+        type: string
+        x-form-field: true
+        x-field-label: "Status"
+      storageLocation:
+        description: "Current storage location of the evidence"
+        type: string
+        x-form-field: true
+        x-field-label: "Storage Location"
+      custodyChain:
+        description: "Chain of custody records for the evidence"
+        type: array
+        items:
+          $ref: 'CustodyRecord.yaml'
+        x-form-field: true
+        x-field-label: "Custody Chain"
+      physicalProperties:
+        description: "Physical properties of the evidence (for PHYSICAL type)"
+        type: object
+        properties:
+          dimensions:
+            description: "Dimensions of the physical evidence"
+            type: string
+            x-form-field: true
+            x-field-label: "Dimensions"
+          weight:
+            description: "Weight of the physical evidence"
+            type: string
+            x-form-field: true
+            x-field-label: "Weight"
+          condition:
+            description: "Condition of the physical evidence"
+            type: string
+            x-form-field: true
+            x-field-label: "Condition"
+        x-form-field: true
+        x-field-label: "Physical Properties"
+      digitalProperties:
+        description: "Digital properties of the evidence (for DIGITAL type)"
+        type: object
+        properties:
+          fileType:
+            description: "File type of the digital evidence"
+            type: string
+            x-form-field: true
+            x-field-label: "File Type"
+          fileSize:
+            description: "Size of the digital evidence file"
+            type: string
+            x-form-field: true
+            x-field-label: "File Size"
+          hash:
+            description: "Hash value of the digital evidence for integrity verification"
+            type: string
+            x-form-field: true
+            x-field-label: "Hash"
+        x-form-field: true
+        x-field-label: "Digital Properties"
+      documentaryProperties:
+        description: "Documentary properties of the evidence (for DOCUMENTARY type)"
+        type: object
+        properties:
+          documentType:
+            description: "Type of document"
+            type: string
+            x-form-field: true
+            x-field-label: "Document Type"
+          pageCount:
+            description: "Number of pages in the document"
+            type: integer
+            x-form-field: true
+            x-field-label: "Page Count"
+          author:
+            description: "Author of the document"
+            type: string
+            x-form-field: true
+            x-field-label: "Author"
+        x-form-field: true
+        x-field-label: "Documentary Properties"
+      forensicProperties:
+        description: "Forensic properties of the evidence (for FORENSIC type)"
+        type: object
+        properties:
+          testType:
+            description: "Type of forensic test performed"
+            type: string
+            x-form-field: true
+            x-field-label: "Test Type"
+          testResults:
+            description: "Results of the forensic test"
+            type: string
+            x-form-field: true
+            x-field-label: "Test Results"
+          testDate:
+            description: "Date the forensic test was performed"
+            type: string
+            format: date-time
+            x-form-field: true
+            x-field-label: "Test Date"
+        x-form-field: true
+        x-field-label: "Forensic Properties"
+      notes:
+        description: "Additional notes about the evidence"
+        type: string
+        x-form-field: true
+        x-field-label: "Notes"
+      tags:
+        description: "Tags or keywords associated with the evidence"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "Tags"
+      filePaths:
+        description: "Paths to files associated with the evidence (photos, documents, etc.)"
+        type: array
+        items:
+          type: string
+        x-form-field: true
+        x-field-label: "File Paths"
+    type: object
+    required:
+      - evidenceNumber
+      - name
+      - type
+      - caseId
+      - collectionDate
+      - collectedById
