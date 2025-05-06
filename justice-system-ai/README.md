@@ -42,7 +42,7 @@ justice-system-ai/
 ### Python API
 
 ```python
-from justice_system.judicial.case_analysis import CaseAnalyzer, get_case_summary
+from justice_system.judicial import CaseAnalyzer, get_case_summary
 
 # Create a case analyzer
 analyzer = CaseAnalyzer(model_name="legal-bert")

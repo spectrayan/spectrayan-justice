@@ -3,7 +3,7 @@
 from typing import List, Dict, Any, Optional
 from google.adk.agents import Agent, SequentialAgent
 
-from justice_system.judicial.subagents.jury.prompt import JURY_PROMPT
+from justice_system.judicial import JURY_PROMPT
 
 
 class JuryAgent:

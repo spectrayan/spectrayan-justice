@@ -3,7 +3,7 @@
 from typing import List, Dict, Any, Optional
 from google.adk.agents import Agent, SequentialAgent
 
-from justice_system.judicial.subagents.lawyers.prompt import PROSECUTOR_PROMPT, DEFENSE_ATTORNEY_PROMPT
+from justice_system.agent.subagents.lawyers.prompt import PROSECUTOR_PROMPT, DEFENSE_ATTORNEY_PROMPT
 
 
 class LawyersAgent:

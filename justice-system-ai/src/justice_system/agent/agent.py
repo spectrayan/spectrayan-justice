@@ -1,9 +1,8 @@
 import datetime
 from typing import List, Dict, Any, Optional
-from google.adk.agents import Agent, SequentialAgent
+from google.adk.agents import SequentialAgent
 
-from justice_system.judicial.prompt import JUDGE_VERDICT_PROMPT
-from justice_system.judicial.subagents import JuryAgent, LawyersAgent
+from justice_system.agent.subagents import JuryAgent, LawyersAgent
 
 
 def get_judge_verdict(case_details: dict) -> dict:
