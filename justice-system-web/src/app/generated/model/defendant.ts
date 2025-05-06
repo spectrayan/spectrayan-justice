@@ -34,92 +34,92 @@ import * as PersonTitleModule from './person-title';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface Defendant { 
+export interface Defendant {
         /**
         * Unique document id auto generated
         */
         readonly id?: string;
-    
+
         /**
         * The principal that created the entity containing the field.
         */
         readonly createdBy?: string;
-    
+
         /**
         * The date and time the entity containing the field was created.
         */
         readonly createdAt?: Date;
-    
+
         /**
         * The principal that recently modified the entity containing the field.
         */
         readonly updatedBy?: string;
-    
+
         /**
         * The date the entity containing the field was recently modified.
         */
         readonly updatedAt?: Date;
-    
+
         title?: PersonTitle;
-    
+
         /**
         * Person\'s first name.
         */
         firstName: string;
-    
+
         /**
         * Person\'s middle name.
         */
         middleName?: string;
-    
+
         /**
         * Person\'s last name.
         */
         lastName: string;
-    
+
         gender?: Gender;
-    
+
         identity?: Identity;
-    
+
         personality?: Personality;
-    
+
         emotionalIntelligence?: EmotionalIntelligence;
-    
+
         physicalTraits?: PhysicalTraits;
-    
+
         socialBehavior?: SocialBehavior;
-    
+
         disability?: Disability;
-    
+
         /**
         * General information or biography about the person.
         */
         about?: string;
-    
+
         /**
         * Defendant\'s date of birth
         */
         dateOfBirth: Date;
-    
+
         address?: Address;
-    
+
         phoneNumber?: Phone;
-    
+
         /**
         * Defendant\'s email address
         */
         email?: string;
-    
+
         /**
         * Summary of defendant\'s criminal history
         */
         criminalHistory?: string;
-    
+
         custodyStatus?: CustodyStatus;
-    
+
 }
 
-export type DefendantFormType = FormGroup<{ 
+export type DefendantFormType = FormGroup<{
     title: FormControl<PersonTitle|null>;
 
     firstName: FormControl<string>;
@@ -131,25 +131,25 @@ export type DefendantFormType = FormGroup<{
     gender: FormControl<Gender|null>;
 
     identity: IdentityModule.IdentityFormType;
-    
+
     personality: PersonalityModule.PersonalityFormType;
-    
+
     emotionalIntelligence: EmotionalIntelligenceModule.EmotionalIntelligenceFormType;
-    
+
     physicalTraits: PhysicalTraitsModule.PhysicalTraitsFormType;
-    
+
     socialBehavior: SocialBehaviorModule.SocialBehaviorFormType;
-    
+
     disability: DisabilityModule.DisabilityFormType;
-    
+
     about: FormControl<string|null>;
 
     dateOfBirth: FormControl<Date>;
 
     address: AddressModule.AddressFormType;
-    
+
     phoneNumber: PhoneModule.PhoneFormType;
-    
+
     email: FormControl<string|null>;
 
     criminalHistory: FormControl<string|null>;
@@ -158,7 +158,7 @@ export type DefendantFormType = FormGroup<{
  }>
 
 export function getDefendantForm(): DefendantFormType {
-    return new FormGroup({ 
+    return new FormGroup({
 
 
 
@@ -166,23 +166,23 @@ export function getDefendantForm(): DefendantFormType {
 
     title: new FormControl<PersonTitle>("Mr.", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     firstName: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required,  Validators.minLength(1), Validators.maxLength(12),] } ),
-    
+
 
     middleName: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     lastName: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required,  Validators.minLength(1),] } ),
-    
+
 
     gender: new FormControl<Gender>("Decline To Identify", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     identity: IdentityModule.getIdentityForm(),
 
@@ -204,11 +204,11 @@ export function getDefendantForm(): DefendantFormType {
 
     about: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     dateOfBirth: new FormControl<Date>(new Date(), {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     address: AddressModule.getAddressForm(),
 
@@ -218,15 +218,15 @@ export function getDefendantForm(): DefendantFormType {
 
     email: new FormControl<string>("", {  nonNullable:   false ,
     validators: [  Validators.email,] } ),
-    
+
 
     criminalHistory: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
 
-    custodyStatus: new FormControl<CustodyStatus>("InCustody", {  nonNullable:   false ,
+
+    custodyStatus: new FormControl<CustodyStatus>("IN_CUSTODY", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
     })
 }
 
@@ -248,7 +248,7 @@ const result: DocumentData = {};
                     result['updatedAt'] = modelObject.updatedAt;
         }
         if (modelObject.title !== undefined) {
-        
+
         result['title'] = modelObject.title;
         }
         if (modelObject.firstName !== undefined) {
@@ -261,31 +261,31 @@ const result: DocumentData = {};
                     result['lastName'] = modelObject.lastName;
         }
         if (modelObject.gender !== undefined) {
-        
+
         result['gender'] = modelObject.gender;
         }
         if (modelObject.identity !== undefined) {
-        
+
         result['identity'] = modelObject.identity;
         }
         if (modelObject.personality !== undefined) {
-        
+
         result['personality'] = modelObject.personality;
         }
         if (modelObject.emotionalIntelligence !== undefined) {
-        
+
         result['emotionalIntelligence'] = modelObject.emotionalIntelligence;
         }
         if (modelObject.physicalTraits !== undefined) {
-        
+
         result['physicalTraits'] = modelObject.physicalTraits;
         }
         if (modelObject.socialBehavior !== undefined) {
-        
+
         result['socialBehavior'] = modelObject.socialBehavior;
         }
         if (modelObject.disability !== undefined) {
-        
+
         result['disability'] = modelObject.disability;
         }
         if (modelObject.about !== undefined) {
@@ -295,11 +295,11 @@ const result: DocumentData = {};
                     result['dateOfBirth'] = modelObject.dateOfBirth;
         }
         if (modelObject.address !== undefined) {
-        
+
         result['address'] = modelObject.address;
         }
         if (modelObject.phoneNumber !== undefined) {
-        
+
         result['phoneNumber'] = modelObject.phoneNumber;
         }
         if (modelObject.email !== undefined) {
@@ -309,7 +309,7 @@ const result: DocumentData = {};
                     result['criminalHistory'] = modelObject.criminalHistory;
         }
         if (modelObject.custodyStatus !== undefined) {
-        
+
         result['custodyStatus'] = modelObject.custodyStatus;
         }
 return result;
@@ -318,60 +318,60 @@ fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Defend
 const data = snapshot.data(options);
 return {
     id: snapshot.id,
-    
+
                     createdBy: data['createdBy'],
-    
+
                     createdAt: data['createdAt'] ? (data['createdAt'] as Timestamp).toDate() : undefined,
-    
+
                     updatedBy: data['updatedBy'],
-    
+
                     updatedAt: data['updatedAt'] ? (data['updatedAt'] as Timestamp).toDate() : undefined,
-    
-            
+
+
             title: data['title'],
-    
+
                     firstName: data['firstName'],
-    
+
                     middleName: data['middleName'],
-    
+
                     lastName: data['lastName'],
-    
-            
+
+
             gender: data['gender'],
-    
-            
+
+
             identity: data['identity'],
-    
-            
+
+
             personality: data['personality'],
-    
-            
+
+
             emotionalIntelligence: data['emotionalIntelligence'],
-    
-            
+
+
             physicalTraits: data['physicalTraits'],
-    
-            
+
+
             socialBehavior: data['socialBehavior'],
-    
-            
+
+
             disability: data['disability'],
-    
+
                     about: data['about'],
-    
+
                 dateOfBirth: data['dateOfBirth'] ? (data['dateOfBirth'] as Timestamp).toDate() : undefined,
-    
-            
+
+
             address: data['address'],
-    
-            
+
+
             phoneNumber: data['phoneNumber'],
-    
+
                     email: data['email'],
-    
+
                     criminalHistory: data['criminalHistory'],
-    
-            
+
+
             custodyStatus: data['custodyStatus'],
     } as Defendant;
     }

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#ffffff">
+  <path d="M448 64v384c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32h320c17.7 0 32 14.3 32 32z"/>
+  <path d="M416 96H96v320h320V96z" fill="#283593"/>
+  <path d="M128 128h256v32H128zM128 192h256v32H128zM128 256h256v32H128zM128 320h128v32H128z"/>
+  <path d="M384 64v384H96c-17.7 0-32-14.3-32-32s14.3-32 32-32h256V64h32z" fill="#1a237e"/>
+  <path d="M96 416h256v32H96c-17.7 0-32-14.3-32-32s14.3-32 32-32h256v32H96z" fill="#ffffff"/>
+  <path d="M96 384h256v32H96z" fill="#1a237e"/>
+  <path d="M96 416c-17.7 0-32 14.3-32 32s14.3 32 32 32h320c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32H96c-17.7 0-32 14.3-32 32v320c0 17.7 14.3 32 32 32zm0-352h320v384H96V64z" fill="#ffffff"/>
+  <text x="256" y="224" font-family="Arial" font-size="48" text-anchor="middle" fill="#ffffff">LAW</text>
+</svg>

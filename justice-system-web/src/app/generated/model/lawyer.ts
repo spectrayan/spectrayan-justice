@@ -34,97 +34,97 @@ import * as PersonTitleModule from './person-title';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface Lawyer { 
+export interface Lawyer {
         /**
         * Unique document id auto generated
         */
         readonly id?: string;
-    
+
         /**
         * The principal that created the entity containing the field.
         */
         readonly createdBy?: string;
-    
+
         /**
         * The date and time the entity containing the field was created.
         */
         readonly createdAt?: Date;
-    
+
         /**
         * The principal that recently modified the entity containing the field.
         */
         readonly updatedBy?: string;
-    
+
         /**
         * The date the entity containing the field was recently modified.
         */
         readonly updatedAt?: Date;
-    
+
         title?: PersonTitle;
-    
+
         /**
         * Person\'s first name.
         */
         firstName: string;
-    
+
         /**
         * Person\'s middle name.
         */
         middleName?: string;
-    
+
         /**
         * Person\'s last name.
         */
         lastName: string;
-    
+
         gender?: Gender;
-    
+
         identity?: Identity;
-    
+
         personality?: Personality;
-    
+
         emotionalIntelligence?: EmotionalIntelligence;
-    
+
         physicalTraits?: PhysicalTraits;
-    
+
         socialBehavior?: SocialBehavior;
-    
+
         disability?: Disability;
-    
+
         /**
         * General information or biography about the person.
         */
         about?: string;
-    
+
         type: LawyerType;
-    
+
         /**
         * Lawyer\'s bar association number
         */
         barNumber: string;
-    
+
         /**
         * Law firm or organization the lawyer is associated with
         */
         firm?: string;
-    
+
         /**
         * Lawyer\'s email address
         */
         email?: string;
-    
+
         phoneNumber?: Phone;
-    
+
         address?: Address;
-    
+
         /**
         * Years of experience as a lawyer
         */
         yearsOfExperience?: number;
-    
+
 }
 
-export type LawyerFormType = FormGroup<{ 
+export type LawyerFormType = FormGroup<{
     title: FormControl<PersonTitle|null>;
 
     firstName: FormControl<string>;
@@ -136,17 +136,17 @@ export type LawyerFormType = FormGroup<{
     gender: FormControl<Gender|null>;
 
     identity: IdentityModule.IdentityFormType;
-    
+
     personality: PersonalityModule.PersonalityFormType;
-    
+
     emotionalIntelligence: EmotionalIntelligenceModule.EmotionalIntelligenceFormType;
-    
+
     physicalTraits: PhysicalTraitsModule.PhysicalTraitsFormType;
-    
+
     socialBehavior: SocialBehaviorModule.SocialBehaviorFormType;
-    
+
     disability: DisabilityModule.DisabilityFormType;
-    
+
     about: FormControl<string|null>;
 
     type: FormControl<LawyerType>;
@@ -158,14 +158,14 @@ export type LawyerFormType = FormGroup<{
     email: FormControl<string|null>;
 
     phoneNumber: PhoneModule.PhoneFormType;
-    
+
     address: AddressModule.AddressFormType;
-    
+
     yearsOfExperience: FormControl<number|null>;
  }>
 
 export function getLawyerForm(): LawyerFormType {
-    return new FormGroup({ 
+    return new FormGroup({
 
 
 
@@ -173,23 +173,23 @@ export function getLawyerForm(): LawyerFormType {
 
     title: new FormControl<PersonTitle>("Mr.", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     firstName: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required,  Validators.minLength(1), Validators.maxLength(12),] } ),
-    
+
 
     middleName: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     lastName: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required,  Validators.minLength(1),] } ),
-    
+
 
     gender: new FormControl<Gender>("Decline To Identify", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     identity: IdentityModule.getIdentityForm(),
 
@@ -211,23 +211,23 @@ export function getLawyerForm(): LawyerFormType {
 
     about: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
 
-    type: new FormControl<LawyerType>("Prosecutor", {  nonNullable:  true  ,
+
+    type: new FormControl<LawyerType>("PROSECUTOR", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     barNumber: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     firm: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     email: new FormControl<string>("", {  nonNullable:   false ,
     validators: [  Validators.email,] } ),
-    
+
 
     phoneNumber: PhoneModule.getPhoneForm(),
 
@@ -237,7 +237,7 @@ export function getLawyerForm(): LawyerFormType {
 
     yearsOfExperience: new FormControl<number>(0, {  nonNullable:   false ,
     validators: [  Validators.min(0),] } ),
-    
+
     })
 }
 
@@ -259,7 +259,7 @@ const result: DocumentData = {};
                     result['updatedAt'] = modelObject.updatedAt;
         }
         if (modelObject.title !== undefined) {
-        
+
         result['title'] = modelObject.title;
         }
         if (modelObject.firstName !== undefined) {
@@ -272,38 +272,38 @@ const result: DocumentData = {};
                     result['lastName'] = modelObject.lastName;
         }
         if (modelObject.gender !== undefined) {
-        
+
         result['gender'] = modelObject.gender;
         }
         if (modelObject.identity !== undefined) {
-        
+
         result['identity'] = modelObject.identity;
         }
         if (modelObject.personality !== undefined) {
-        
+
         result['personality'] = modelObject.personality;
         }
         if (modelObject.emotionalIntelligence !== undefined) {
-        
+
         result['emotionalIntelligence'] = modelObject.emotionalIntelligence;
         }
         if (modelObject.physicalTraits !== undefined) {
-        
+
         result['physicalTraits'] = modelObject.physicalTraits;
         }
         if (modelObject.socialBehavior !== undefined) {
-        
+
         result['socialBehavior'] = modelObject.socialBehavior;
         }
         if (modelObject.disability !== undefined) {
-        
+
         result['disability'] = modelObject.disability;
         }
         if (modelObject.about !== undefined) {
                     result['about'] = modelObject.about;
         }
         if (modelObject.type !== undefined) {
-        
+
         result['type'] = modelObject.type;
         }
         if (modelObject.barNumber !== undefined) {
@@ -316,11 +316,11 @@ const result: DocumentData = {};
                     result['email'] = modelObject.email;
         }
         if (modelObject.phoneNumber !== undefined) {
-        
+
         result['phoneNumber'] = modelObject.phoneNumber;
         }
         if (modelObject.address !== undefined) {
-        
+
         result['address'] = modelObject.address;
         }
         if (modelObject.yearsOfExperience !== undefined) {
@@ -332,62 +332,62 @@ fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Lawyer
 const data = snapshot.data(options);
 return {
     id: snapshot.id,
-    
+
                     createdBy: data['createdBy'],
-    
+
                     createdAt: data['createdAt'] ? (data['createdAt'] as Timestamp).toDate() : undefined,
-    
+
                     updatedBy: data['updatedBy'],
-    
+
                     updatedAt: data['updatedAt'] ? (data['updatedAt'] as Timestamp).toDate() : undefined,
-    
-            
+
+
             title: data['title'],
-    
+
                     firstName: data['firstName'],
-    
+
                     middleName: data['middleName'],
-    
+
                     lastName: data['lastName'],
-    
-            
+
+
             gender: data['gender'],
-    
-            
+
+
             identity: data['identity'],
-    
-            
+
+
             personality: data['personality'],
-    
-            
+
+
             emotionalIntelligence: data['emotionalIntelligence'],
-    
-            
+
+
             physicalTraits: data['physicalTraits'],
-    
-            
+
+
             socialBehavior: data['socialBehavior'],
-    
-            
+
+
             disability: data['disability'],
-    
+
                     about: data['about'],
-    
-            
+
+
             type: data['type'],
-    
+
                     barNumber: data['barNumber'],
-    
+
                     firm: data['firm'],
-    
+
                     email: data['email'],
-    
-            
+
+
             phoneNumber: data['phoneNumber'],
-    
-            
+
+
             address: data['address'],
-    
+
                     yearsOfExperience: data['yearsOfExperience'],
     } as Lawyer;
     }

@@ -23,43 +23,43 @@ import * as BloodTypeModule from './blood-type';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface PhysicalTraits { 
+export interface PhysicalTraits {
         /**
         * Height in centimeters.
         */
         height: number;
-    
+
         /**
         * Weight in kilograms.
         */
         weight: number;
-    
+
         eyeColor: EyeColor;
-    
+
         hairColor: HairColor;
-    
+
         bloodType?: BloodType;
-    
+
         /**
         * List of distinguishing physical features.
         */
         distinguishingFeatures?: Array<string>;
-    
+
         physicalCondition?: PhysicalCondition;
-    
+
         /**
         * List of physical disabilities, if any.
         */
         disabilities?: Array<string>;
-    
+
         /**
         * List of medical conditions, if any.
         */
         medicalConditions?: Array<string>;
-    
+
 }
 
-export type PhysicalTraitsFormType = FormGroup<{ 
+export type PhysicalTraitsFormType = FormGroup<{
     height: FormControl<number>;
 
     weight: FormControl<number>;
@@ -80,42 +80,42 @@ export type PhysicalTraitsFormType = FormGroup<{
  }>
 
 export function getPhysicalTraitsForm(): PhysicalTraitsFormType {
-    return new FormGroup({ 
+    return new FormGroup({
     height: new FormControl<number>(0.0, {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     weight: new FormControl<number>(0.0, {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     eyeColor: new FormControl<EyeColor>("Brown", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     hairColor: new FormControl<HairColor>("Black", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
 
-    bloodType: new FormControl<BloodType>("A", {  nonNullable:   false ,
+
+    bloodType: new FormControl<BloodType>("A+", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     distinguishingFeatures: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     physicalCondition: new FormControl<PhysicalCondition>("Excellent", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     disabilities: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     medicalConditions: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
     })
 }
 
@@ -131,22 +131,22 @@ const result: DocumentData = {};
                     result['weight'] = modelObject.weight;
         }
         if (modelObject.eyeColor !== undefined) {
-        
+
         result['eyeColor'] = modelObject.eyeColor;
         }
         if (modelObject.hairColor !== undefined) {
-        
+
         result['hairColor'] = modelObject.hairColor;
         }
         if (modelObject.bloodType !== undefined) {
-        
+
         result['bloodType'] = modelObject.bloodType;
         }
         if (modelObject.distinguishingFeatures !== undefined) {
                     result['distinguishingFeatures'] = modelObject.distinguishingFeatures;
         }
         if (modelObject.physicalCondition !== undefined) {
-        
+
         result['physicalCondition'] = modelObject.physicalCondition;
         }
         if (modelObject.disabilities !== undefined) {
@@ -160,27 +160,27 @@ return result;
 fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): PhysicalTraits {
 const data = snapshot.data(options);
 return {
-    
+
                     height: data['height'],
-    
+
                     weight: data['weight'],
-    
-            
+
+
             eyeColor: data['eyeColor'],
-    
-            
+
+
             hairColor: data['hairColor'],
-    
-            
+
+
             bloodType: data['bloodType'],
-    
+
                     distinguishingFeatures: data['distinguishingFeatures'],
-    
-            
+
+
             physicalCondition: data['physicalCondition'],
-    
+
                     disabilities: data['disabilities'],
-    
+
                     medicalConditions: data['medicalConditions'],
     } as PhysicalTraits;
     }

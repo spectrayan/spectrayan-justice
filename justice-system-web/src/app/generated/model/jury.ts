@@ -14,57 +14,57 @@ import * as JuryStatusModule from './jury-status';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface Jury { 
+export interface Jury {
         /**
         * Unique document id auto generated
         */
         readonly id?: string;
-    
+
         /**
         * The principal that created the entity containing the field.
         */
         readonly createdBy?: string;
-    
+
         /**
         * The date and time the entity containing the field was created.
         */
         readonly createdAt?: Date;
-    
+
         /**
         * The principal that recently modified the entity containing the field.
         */
         readonly updatedBy?: string;
-    
+
         /**
         * The date the entity containing the field was recently modified.
         */
         readonly updatedAt?: Date;
-    
+
         /**
         * Name or identifier for the jury
         */
         name: string;
-    
+
         /**
         * List of juror IDs that make up this jury
         */
         jurorIds: Array<string>;
-    
+
         /**
         * ID of the juror who is the foreman
         */
         foremanId?: string;
-    
+
         /**
         * Number of jurors in the jury
         */
         size?: number;
-    
+
         status?: JuryStatus;
-    
+
 }
 
-export type JuryFormType = FormGroup<{ 
+export type JuryFormType = FormGroup<{
     name: FormControl<string>;
 
     jurorIds: FormControl<Array<string>>;
@@ -77,7 +77,7 @@ export type JuryFormType = FormGroup<{
  }>
 
 export function getJuryForm(): JuryFormType {
-    return new FormGroup({ 
+    return new FormGroup({
 
 
 
@@ -85,23 +85,23 @@ export function getJuryForm(): JuryFormType {
 
     name: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     jurorIds: new FormControl<Array<string>>([], {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     foremanId: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     size: new FormControl<number>(0, {  nonNullable:   false ,
     validators: [  Validators.min(1),] } ),
-    
 
-    status: new FormControl<JuryStatus>("Selection", {  nonNullable:   false ,
+
+    status: new FormControl<JuryStatus>("SELECTION", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
     })
 }
 
@@ -135,7 +135,7 @@ const result: DocumentData = {};
                     result['size'] = modelObject.size;
         }
         if (modelObject.status !== undefined) {
-        
+
         result['status'] = modelObject.status;
         }
 return result;
@@ -144,24 +144,24 @@ fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Jury {
 const data = snapshot.data(options);
 return {
     id: snapshot.id,
-    
+
                     createdBy: data['createdBy'],
-    
+
                     createdAt: data['createdAt'] ? (data['createdAt'] as Timestamp).toDate() : undefined,
-    
+
                     updatedBy: data['updatedBy'],
-    
+
                     updatedAt: data['updatedAt'] ? (data['updatedAt'] as Timestamp).toDate() : undefined,
-    
+
                     name: data['name'],
-    
+
                     jurorIds: data['jurorIds'],
-    
+
                     foremanId: data['foremanId'],
-    
+
                     size: data['size'],
-    
-            
+
+
             status: data['status'],
     } as Jury;
     }

@@ -16,139 +16,139 @@ import * as CaseStatusModule from './case-status';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface Case { 
+export interface Case {
         /**
         * Unique document id auto generated
         */
         readonly id?: string;
-    
+
         /**
         * The principal that created the entity containing the field.
         */
         readonly createdBy?: string;
-    
+
         /**
         * The date and time the entity containing the field was created.
         */
         readonly createdAt?: Date;
-    
+
         /**
         * The principal that recently modified the entity containing the field.
         */
         readonly updatedBy?: string;
-    
+
         /**
         * The date the entity containing the field was recently modified.
         */
         readonly updatedAt?: Date;
-    
+
         /**
         * Unique case number assigned by the court
         */
         caseNumber: string;
-    
+
         /**
         * Title or name of the case
         */
         title: string;
-    
+
         /**
         * Brief description of the case
         */
         description?: string;
-    
+
         type: CaseType;
-    
+
         status?: CaseStatus;
-    
+
         /**
         * Date the case was filed
         */
         filingDate: Date;
-    
+
         /**
         * ID of the court handling the case
         */
         courtId: string;
-    
+
         /**
         * ID of the judge presiding over the case
         */
         judgeId?: string;
-    
+
         /**
         * IDs of prosecutors assigned to the case
         */
         prosecutorIds?: Array<string>;
-    
+
         /**
         * IDs of defense attorneys assigned to the case
         */
         defenseAttorneyIds?: Array<string>;
-    
+
         /**
         * IDs of defendants in the case
         */
         defendantIds?: Array<string>;
-    
+
         /**
         * IDs of plaintiffs in the case
         */
         plaintiffIds?: Array<string>;
-    
+
         /**
         * IDs of victims in the case
         */
         victimIds?: Array<string>;
-    
+
         /**
         * IDs of witnesses in the case
         */
         witnessIds?: Array<string>;
-    
+
         /**
         * ID of the jury assigned to the case
         */
         juryId?: string;
-    
+
         /**
         * ID of the clerk assigned to the case
         */
         clerkId?: string;
-    
+
         /**
         * ID of the bailiff assigned to the case
         */
         bailiffId?: string;
-    
+
         /**
         * ID of the court reporter assigned to the case
         */
         reporterId?: string;
-    
+
         /**
         * IDs of evidence associated with the case
         */
         evidenceIds?: Array<string>;
-    
+
         /**
         * Dates of scheduled hearings
         */
         hearingDates?: Array<Date>;
-    
+
         /**
         * Verdict of the case if concluded
         */
         verdict?: string;
-    
+
         /**
         * Details of the sentence if applicable
         */
         sentenceDetails?: string;
-    
+
 }
 
-export type CaseFormType = FormGroup<{ 
+export type CaseFormType = FormGroup<{
     caseNumber: FormControl<string>;
 
     title: FormControl<string>;
@@ -195,7 +195,7 @@ export type CaseFormType = FormGroup<{
  }>
 
 export function getCaseForm(): CaseFormType {
-    return new FormGroup({ 
+    return new FormGroup({
 
 
 
@@ -203,91 +203,91 @@ export function getCaseForm(): CaseFormType {
 
     caseNumber: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     title: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     description: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
 
-    type: new FormControl<CaseType>("Criminal", {  nonNullable:  true  ,
+
+    type: new FormControl<CaseType>("CRIMINAL", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
 
-    status: new FormControl<CaseStatus>("Pending", {  nonNullable:   false ,
+
+    status: new FormControl<CaseStatus>("PENDING", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     filingDate: new FormControl<Date>(new Date(), {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     courtId: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     judgeId: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     prosecutorIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     defenseAttorneyIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     defendantIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     plaintiffIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     victimIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     witnessIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     juryId: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     clerkId: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     bailiffId: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     reporterId: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     evidenceIds: new FormControl<Array<string>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     hearingDates: new FormControl<Array<Date>>([], {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     verdict: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     sentenceDetails: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
     })
 }
 
@@ -318,11 +318,11 @@ const result: DocumentData = {};
                     result['description'] = modelObject.description;
         }
         if (modelObject.type !== undefined) {
-        
+
         result['type'] = modelObject.type;
         }
         if (modelObject.status !== undefined) {
-        
+
         result['status'] = modelObject.status;
         }
         if (modelObject.filingDate !== undefined) {
@@ -382,59 +382,59 @@ fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Case {
 const data = snapshot.data(options);
 return {
     id: snapshot.id,
-    
+
                     createdBy: data['createdBy'],
-    
+
                     createdAt: data['createdAt'] ? (data['createdAt'] as Timestamp).toDate() : undefined,
-    
+
                     updatedBy: data['updatedBy'],
-    
+
                     updatedAt: data['updatedAt'] ? (data['updatedAt'] as Timestamp).toDate() : undefined,
-    
+
                     caseNumber: data['caseNumber'],
-    
+
                     title: data['title'],
-    
+
                     description: data['description'],
-    
-            
+
+
             type: data['type'],
-    
-            
+
+
             status: data['status'],
-    
+
                 filingDate: data['filingDate'] ? (data['filingDate'] as Timestamp).toDate() : undefined,
-    
+
                     courtId: data['courtId'],
-    
+
                     judgeId: data['judgeId'],
-    
+
                     prosecutorIds: data['prosecutorIds'],
-    
+
                     defenseAttorneyIds: data['defenseAttorneyIds'],
-    
+
                     defendantIds: data['defendantIds'],
-    
+
                     plaintiffIds: data['plaintiffIds'],
-    
+
                     victimIds: data['victimIds'],
-    
+
                     witnessIds: data['witnessIds'],
-    
+
                     juryId: data['juryId'],
-    
+
                     clerkId: data['clerkId'],
-    
+
                     bailiffId: data['bailiffId'],
-    
+
                     reporterId: data['reporterId'],
-    
+
                     evidenceIds: data['evidenceIds'],
-    
+
                     hearingDates: data['hearingDates'],
-    
+
                     verdict: data['verdict'],
-    
+
                     sentenceDetails: data['sentenceDetails'],
     } as Case;
     }

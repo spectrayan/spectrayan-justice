@@ -18,56 +18,56 @@ import * as PhoneModule from './phone';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface Court { 
+export interface Court {
         /**
         * Unique document id auto generated
         */
         readonly id?: string;
-    
+
         /**
         * The principal that created the entity containing the field.
         */
         readonly createdBy?: string;
-    
+
         /**
         * The date and time the entity containing the field was created.
         */
         readonly createdAt?: Date;
-    
+
         /**
         * The principal that recently modified the entity containing the field.
         */
         readonly updatedBy?: string;
-    
+
         /**
         * The date the entity containing the field was recently modified.
         */
         readonly updatedAt?: Date;
-    
+
         /**
         * Name of the court
         */
         name: string;
-    
+
         type: CourtType;
-    
+
         /**
         * Jurisdiction of the court
         */
         jurisdiction: string;
-    
+
         address?: Address;
-    
+
         phoneNumber?: Phone;
-    
+
         /**
         * Court\'s email address
         */
         email?: string;
-    
+
 }
 
-export type CourtFormType = FormGroup<{ 
+export type CourtFormType = FormGroup<{
     name: FormControl<string>;
 
     type: FormControl<CourtType>;
@@ -75,14 +75,14 @@ export type CourtFormType = FormGroup<{
     jurisdiction: FormControl<string>;
 
     address: AddressModule.AddressFormType;
-    
+
     phoneNumber: PhoneModule.PhoneFormType;
-    
+
     email: FormControl<string|null>;
  }>
 
 export function getCourtForm(): CourtFormType {
-    return new FormGroup({ 
+    return new FormGroup({
 
 
 
@@ -90,15 +90,15 @@ export function getCourtForm(): CourtFormType {
 
     name: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required,  Validators.minLength(1),] } ),
-    
 
-    type: new FormControl<CourtType>("Supreme", {  nonNullable:  true  ,
+
+    type: new FormControl<CourtType>("SUPREME", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     jurisdiction: new FormControl<string>("", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     address: AddressModule.getAddressForm(),
 
@@ -108,7 +108,7 @@ export function getCourtForm(): CourtFormType {
 
     email: new FormControl<string>("", {  nonNullable:   false ,
     validators: [  Validators.email,] } ),
-    
+
     })
 }
 
@@ -133,18 +133,18 @@ const result: DocumentData = {};
                     result['name'] = modelObject.name;
         }
         if (modelObject.type !== undefined) {
-        
+
         result['type'] = modelObject.type;
         }
         if (modelObject.jurisdiction !== undefined) {
                     result['jurisdiction'] = modelObject.jurisdiction;
         }
         if (modelObject.address !== undefined) {
-        
+
         result['address'] = modelObject.address;
         }
         if (modelObject.phoneNumber !== undefined) {
-        
+
         result['phoneNumber'] = modelObject.phoneNumber;
         }
         if (modelObject.email !== undefined) {
@@ -156,28 +156,28 @@ fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Court 
 const data = snapshot.data(options);
 return {
     id: snapshot.id,
-    
+
                     createdBy: data['createdBy'],
-    
+
                     createdAt: data['createdAt'] ? (data['createdAt'] as Timestamp).toDate() : undefined,
-    
+
                     updatedBy: data['updatedBy'],
-    
+
                     updatedAt: data['updatedAt'] ? (data['updatedAt'] as Timestamp).toDate() : undefined,
-    
+
                     name: data['name'],
-    
-            
+
+
             type: data['type'],
-    
+
                     jurisdiction: data['jurisdiction'],
-    
-            
+
+
             address: data['address'],
-    
-            
+
+
             phoneNumber: data['phoneNumber'],
-    
+
                     email: data['email'],
     } as Court;
     }

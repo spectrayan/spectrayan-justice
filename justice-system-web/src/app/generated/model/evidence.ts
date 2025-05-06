@@ -24,110 +24,110 @@ import * as CustodyRecordModule from './custody-record';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface Evidence { 
+export interface Evidence {
         /**
         * Unique document id auto generated
         */
         readonly id?: string;
-    
+
         /**
         * The principal that created the entity containing the field.
         */
         readonly createdBy?: string;
-    
+
         /**
         * The date and time the entity containing the field was created.
         */
         readonly createdAt?: Date;
-    
+
         /**
         * The principal that recently modified the entity containing the field.
         */
         readonly updatedBy?: string;
-    
+
         /**
         * The date the entity containing the field was recently modified.
         */
         readonly updatedAt?: Date;
-    
+
         /**
         * Unique evidence number assigned by the system
         */
         evidenceNumber: string;
-    
+
         /**
         * Name or title of the evidence
         */
         name: string;
-    
+
         /**
         * Detailed description of the evidence
         */
         description?: string;
-    
+
         type: EvidenceType;
-    
+
         /**
         * ID of the case this evidence is associated with
         */
         caseId: string;
-    
+
         /**
         * Date and time the evidence was collected
         */
         collectionDate: Date;
-    
+
         /**
         * Location where the evidence was collected
         */
         collectionLocation?: string;
-    
+
         /**
         * ID of the person who collected the evidence
         */
         collectedById: string;
-    
+
         /**
         * Current status of the evidence (e.g., in custody, analyzed, released)
         */
         status?: string;
-    
+
         /**
         * Current storage location of the evidence
         */
         storageLocation?: string;
-    
+
         /**
         * Chain of custody records for the evidence
         */
         custodyChain?: Array<CustodyRecord>;
-    
+
         physicalProperties?: EvidenceAllOfPhysicalProperties;
-    
+
         digitalProperties?: EvidenceAllOfDigitalProperties;
-    
+
         documentaryProperties?: EvidenceAllOfDocumentaryProperties;
-    
+
         forensicProperties?: EvidenceAllOfForensicProperties;
-    
+
         /**
         * Additional notes about the evidence
         */
         notes?: string;
-    
+
         /**
         * Tags or keywords associated with the evidence
         */
         tags?: Array<string>;
-    
+
         /**
         * Paths to files associated with the evidence (photos, documents, etc.)
         */
         filePaths?: Array<string>;
-    
+
 }
 
-export type EvidenceFormType = FormGroup<{ 
+export type EvidenceFormType = FormGroup<{
     evidenceNumber: FormControl<string>;
 
     name: FormControl<string>;
@@ -165,87 +165,6 @@ export type EvidenceFormType = FormGroup<{
     filePaths: FormControl<Array<string>|null>;
  }>
 
-export function getEvidenceForm(): EvidenceFormType {
-    return new FormGroup({ 
-
-
-
-
-
-    evidenceNumber: new FormControl<string>("", {  nonNullable:  true  ,
-    validators: [  Validators.required, ] } ),
-    
-
-    name: new FormControl<string>("", {  nonNullable:  true  ,
-    validators: [  Validators.required, ] } ),
-    
-
-    description: new FormControl<string>("", {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    type: new FormControl<EvidenceType>("Physical", {  nonNullable:  true  ,
-    validators: [  Validators.required, ] } ),
-    
-
-    caseId: new FormControl<string>("", {  nonNullable:  true  ,
-    validators: [  Validators.required, ] } ),
-    
-
-    collectionDate: new FormControl<Date>(new Date(), {  nonNullable:  true  ,
-    validators: [  Validators.required, ] } ),
-    
-
-    collectionLocation: new FormControl<string>("", {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    collectedById: new FormControl<string>("", {  nonNullable:  true  ,
-    validators: [  Validators.required, ] } ),
-    
-
-    status: new FormControl<string>("", {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    storageLocation: new FormControl<string>("", {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    custodyChain: new FormControl<Array<CustodyRecord>>([], {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    physicalProperties: new FormControl<EvidenceAllOfPhysicalProperties>(null, {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    digitalProperties: new FormControl<EvidenceAllOfDigitalProperties>(null, {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    documentaryProperties: new FormControl<EvidenceAllOfDocumentaryProperties>(null, {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    forensicProperties: new FormControl<EvidenceAllOfForensicProperties>(null, {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    notes: new FormControl<string>("", {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    tags: new FormControl<Array<string>>([], {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-
-    filePaths: new FormControl<Array<string>>([], {  nonNullable:   false ,
-    validators: [ ] } ),
-    
-    })
-}
-
 
 // Firestore data converter for Evidence
 export const EvidenceFirestoreConverter = {
@@ -273,7 +192,7 @@ const result: DocumentData = {};
                     result['description'] = modelObject.description;
         }
         if (modelObject.type !== undefined) {
-        
+
         result['type'] = modelObject.type;
         }
         if (modelObject.caseId !== undefined) {
@@ -295,31 +214,31 @@ const result: DocumentData = {};
                     result['storageLocation'] = modelObject.storageLocation;
         }
         if (modelObject.custodyChain !== undefined) {
-        
-            
+
+
             if (Array.isArray(modelObject.custodyChain)) {
             result['custodyChain'] = modelObject.custodyChain.map(item => {
             return CustodyRecordModule.CustodyRecordFirestoreConverter.toFirestore(item);
             });
             } else {
             result['custodyChain'] = [];
-            } 
-        
+            }
+
         }
         if (modelObject.physicalProperties !== undefined) {
-        
+
         result['physicalProperties'] = modelObject.physicalProperties;
         }
         if (modelObject.digitalProperties !== undefined) {
-        
+
         result['digitalProperties'] = modelObject.digitalProperties;
         }
         if (modelObject.documentaryProperties !== undefined) {
-        
+
         result['documentaryProperties'] = modelObject.documentaryProperties;
         }
         if (modelObject.forensicProperties !== undefined) {
-        
+
         result['forensicProperties'] = modelObject.forensicProperties;
         }
         if (modelObject.notes !== undefined) {
@@ -337,57 +256,57 @@ fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Eviden
 const data = snapshot.data(options);
 return {
     id: snapshot.id,
-    
+
                     createdBy: data['createdBy'],
-    
+
                     createdAt: data['createdAt'] ? (data['createdAt'] as Timestamp).toDate() : undefined,
-    
+
                     updatedBy: data['updatedBy'],
-    
+
                     updatedAt: data['updatedAt'] ? (data['updatedAt'] as Timestamp).toDate() : undefined,
-    
+
                     evidenceNumber: data['evidenceNumber'],
-    
+
                     name: data['name'],
-    
+
                     description: data['description'],
-    
-            
+
+
             type: data['type'],
-    
+
                     caseId: data['caseId'],
-    
+
                     collectionDate: data['collectionDate'] ? (data['collectionDate'] as Timestamp).toDate() : undefined,
-    
+
                     collectionLocation: data['collectionLocation'],
-    
+
                     collectedById: data['collectedById'],
-    
+
                     status: data['status'],
-    
+
                     storageLocation: data['storageLocation'],
-    
+
             custodyChain: data['custodyChain'] ? (data['custodyChain'] as Array<any>).map(item => {
                 return CustodyRecordModule.CustodyRecordFirestoreConverter.fromFirestore(item, options);
                 }) : [],
-            
-    
-            
+
+
+
             physicalProperties: data['physicalProperties'],
-    
-            
+
+
             digitalProperties: data['digitalProperties'],
-    
-            
+
+
             documentaryProperties: data['documentaryProperties'],
-    
-            
+
+
             forensicProperties: data['forensicProperties'],
-    
+
                     notes: data['notes'],
-    
+
                     tags: data['tags'],
-    
+
                     filePaths: data['filePaths'],
     } as Evidence;
     }

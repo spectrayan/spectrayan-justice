@@ -25,45 +25,45 @@ import * as CommunicationStyleModule from './communication-style';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions, Timestamp} from "@angular/fire/firestore";
 
-export interface SocialBehavior { 
+export interface SocialBehavior {
         communicationStyle: CommunicationStyle;
-    
+
         socialNetworkSize?: SocialNetworkSize;
-    
+
         conflictResolutionStyle: ConflictResolutionStyle;
-    
+
         leadershipStyle?: LeadershipStyle;
-    
+
         /**
         * Score for ability to work in teams (1-100).
         */
         teamworkAbility: number;
-    
+
         /**
         * Score for ability to influence others (1-100).
         */
         socialInfluence?: number;
-    
+
         trustLevel?: TrustLevel;
-    
+
         /**
         * Score for adaptability in social situations (1-100).
         */
         socialAdaptability?: number;
-    
+
         /**
         * Score for sensitivity to cultural differences (1-100).
         */
         culturalSensitivity?: number;
-    
+
         /**
         * Additional notes about social behavior.
         */
         socialBehaviorNotes?: string;
-    
+
 }
 
-export type SocialBehaviorFormType = FormGroup<{ 
+export type SocialBehaviorFormType = FormGroup<{
     communicationStyle: FormControl<CommunicationStyle>;
 
     socialNetworkSize: FormControl<SocialNetworkSize|null>;
@@ -86,46 +86,46 @@ export type SocialBehaviorFormType = FormGroup<{
  }>
 
 export function getSocialBehaviorForm(): SocialBehaviorFormType {
-    return new FormGroup({ 
+    return new FormGroup({
     communicationStyle: new FormControl<CommunicationStyle>("Assertive", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
 
-    socialNetworkSize: new FormControl<SocialNetworkSize>("VerySmall", {  nonNullable:   false ,
+
+    socialNetworkSize: new FormControl<SocialNetworkSize>("Very Small", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     conflictResolutionStyle: new FormControl<ConflictResolutionStyle>("Avoiding", {  nonNullable:  true  ,
     validators: [  Validators.required, ] } ),
-    
+
 
     leadershipStyle: new FormControl<LeadershipStyle>("Autocratic", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     teamworkAbility: new FormControl<number>(0, {  nonNullable:  true  ,
     validators: [  Validators.required,  Validators.min(1), Validators.max(100),] } ),
-    
+
 
     socialInfluence: new FormControl<number>(0, {  nonNullable:   false ,
     validators: [  Validators.min(1), Validators.max(100),] } ),
-    
 
-    trustLevel: new FormControl<TrustLevel>("VeryLow", {  nonNullable:   false ,
+
+    trustLevel: new FormControl<TrustLevel>("Very Low", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
 
     socialAdaptability: new FormControl<number>(0, {  nonNullable:   false ,
     validators: [  Validators.min(1), Validators.max(100),] } ),
-    
+
 
     culturalSensitivity: new FormControl<number>(0, {  nonNullable:   false ,
     validators: [  Validators.min(1), Validators.max(100),] } ),
-    
+
 
     socialBehaviorNotes: new FormControl<string>("", {  nonNullable:   false ,
     validators: [ ] } ),
-    
+
     })
 }
 
@@ -135,19 +135,19 @@ export const SocialBehaviorFirestoreConverter = {
 toFirestore(modelObject: SocialBehavior): DocumentData {
 const result: DocumentData = {};
         if (modelObject.communicationStyle !== undefined) {
-        
+
         result['communicationStyle'] = modelObject.communicationStyle;
         }
         if (modelObject.socialNetworkSize !== undefined) {
-        
+
         result['socialNetworkSize'] = modelObject.socialNetworkSize;
         }
         if (modelObject.conflictResolutionStyle !== undefined) {
-        
+
         result['conflictResolutionStyle'] = modelObject.conflictResolutionStyle;
         }
         if (modelObject.leadershipStyle !== undefined) {
-        
+
         result['leadershipStyle'] = modelObject.leadershipStyle;
         }
         if (modelObject.teamworkAbility !== undefined) {
@@ -157,7 +157,7 @@ const result: DocumentData = {};
                     result['socialInfluence'] = modelObject.socialInfluence;
         }
         if (modelObject.trustLevel !== undefined) {
-        
+
         result['trustLevel'] = modelObject.trustLevel;
         }
         if (modelObject.socialAdaptability !== undefined) {
@@ -174,30 +174,30 @@ return result;
 fromFirestore(snapshot: QueryDocumentSnapshot, options: SnapshotOptions): SocialBehavior {
 const data = snapshot.data(options);
 return {
-    
-            
+
+
             communicationStyle: data['communicationStyle'],
-    
-            
+
+
             socialNetworkSize: data['socialNetworkSize'],
-    
-            
+
+
             conflictResolutionStyle: data['conflictResolutionStyle'],
-    
-            
+
+
             leadershipStyle: data['leadershipStyle'],
-    
+
                     teamworkAbility: data['teamworkAbility'],
-    
+
                     socialInfluence: data['socialInfluence'],
-    
-            
+
+
             trustLevel: data['trustLevel'],
-    
+
                     socialAdaptability: data['socialAdaptability'],
-    
+
                     culturalSensitivity: data['culturalSensitivity'],
-    
+
                     socialBehaviorNotes: data['socialBehaviorNotes'],
     } as SocialBehavior;
     }
