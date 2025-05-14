@@ -63,6 +63,9 @@ class TextCorrector:
         replaces names of individuals or entities/companies with appropriate role-based terms
         like defendant, witness, lawyer, organization, expert, police, etc.
 
+        The text is processed in chunks of approximately 500 characters, with chunk boundaries
+        at natural text breaks like periods or end of lines.
+
         Args:
             text: Text to correct and anonymize
 
@@ -77,42 +80,106 @@ class TextCorrector:
             return text
 
         try:
-            logger.info("Correcting text with Ollama")
+            logger.info("Correcting text with Ollama in chunks")
 
-            # Create a prompt for the language model
-            prompt = f"""
-            Please correct any spelling and grammar errors in the following text.
-            Additionally, replace names of individuals or entities/companies with appropriate role-based terms like:
-            - defendant, accused, petitioner, appellant, respondent for parties in the case
-            - witness, victim, complainant for those giving testimony or affected
-            - lawyer, attorney, counsel, advocate for legal representatives
-            - organization, company, corporation, institution for business entities
-            - expert, specialist, professional for those providing expert opinions
-            - police, investigator, officer for law enforcement
-            - judge, magistrate, justice for judicial officers
+            # Split text into chunks of approximately 500 characters
+            # Break at natural boundaries (periods or end of lines)
+            chunks = self._split_text_into_chunks(text)
+            corrected_chunks = []
 
-            Maintain the original meaning and structure. Only fix errors and replace names, don't rewrite or summarize or add notes of what was changed.
+            for i, chunk in enumerate(chunks):
+                logger.info(f"Processing chunk {i+1}/{len(chunks)}")
 
-            Do not respond with any additional information other than the corrected text. If provided text is empty or could not correct, simply return the original text. Do not request for any additional information.
+                # Create a prompt for the language model
+                prompt = f"""
+                Please correct any spelling and grammar errors in the following text.
+                Additionally, replace names of individuals or entities/companies with appropriate role-based terms like:
+                - defendant, accused, petitioner, appellant, respondent for parties in the case
+                - witness, victim, complainant for those giving testimony or affected
+                - lawyer, attorney, counsel, advocate for legal representatives
+                - organization, company, corporation, institution for business entities
+                - expert, specialist, professional for those providing expert opinions
+                - police, investigator, officer for law enforcement
+                - judge, magistrate, justice for judicial officers
 
-            TEXT: {text}
+                Maintain the original meaning and structure. Only fix errors and replace names, don't rewrite or summarize or add notes of what was changed.
 
-            CORRECTED TEXT:
-            """
+                Do not respond with any additional information other than the corrected text. If provided text is empty or could not correct, simply return the original text. Do not request for any additional information.
 
-            # Generate corrected text
-            response = self.llm.complete(prompt)
-            corrected_text = response.text.strip()
+                TEXT: {chunk}
 
-            # If the model returns the prompt or formatting, extract just the corrected text
-            if "CORRECTED TEXT:" in corrected_text:
-                corrected_text = corrected_text.split("CORRECTED TEXT:")[1].strip()
+                CORRECTED TEXT:
+                """
 
+                # Generate corrected text for this chunk
+                response = self.llm.complete(prompt)
+                corrected_chunk = response.text.strip()
+
+                # If the model returns the prompt or formatting, extract just the corrected text
+                if "CORRECTED TEXT:" in corrected_chunk:
+                    corrected_chunk = corrected_chunk.split("CORRECTED TEXT:")[1].strip()
+
+                corrected_chunks.append(corrected_chunk)
+
+            # Combine all corrected chunks
+            corrected_text = " ".join(corrected_chunks)
             logger.info("Text correction completed")
             return corrected_text
         except Exception as e:
             logger.error(f"Error during text correction: {str(e)}")
             return text
+
+    def _split_text_into_chunks(self, text: str, chunk_size: int = 1000) -> list:
+        """
+        Split text into chunks of approximately the specified size.
+
+        Chunks are created by breaking at natural boundaries like periods or end of lines.
+        If no natural boundary is found within a reasonable range, the chunk is split at the exact size.
+
+        Args:
+            text: Text to split into chunks
+            chunk_size: Target size for each chunk in characters
+
+        Returns:
+            List of text chunks
+        """
+        if not text:
+            return []
+
+        chunks = []
+        current_pos = 0
+        text_length = len(text)
+
+        while current_pos < text_length:
+            # Determine end position for this chunk
+            end_pos = min(current_pos + chunk_size, text_length)
+
+            # If we're not at the end of the text, try to find a natural break
+            if end_pos < text_length:
+                # Look for period followed by space or newline
+                period_pos = text.rfind('. ', current_pos, end_pos)
+                newline_pos = text.rfind('\n', current_pos, end_pos)
+
+                # Find the latest natural break
+                natural_break = max(period_pos, newline_pos)
+
+                # If found a natural break, use it
+                if natural_break > current_pos:
+                    # Include the period or newline in the chunk
+                    if natural_break == period_pos:
+                        end_pos = period_pos + 2  # Include period and space
+                    else:
+                        end_pos = newline_pos + 1  # Include newline
+
+            # Extract the chunk and add to list
+            chunk = text[current_pos:end_pos].strip()
+            if chunk:  # Only add non-empty chunks
+                chunks.append(chunk)
+
+            # Move to next position
+            current_pos = end_pos
+
+        return chunks
 
     def correct_fields(self, data: Dict[str, Any], fields_to_correct: Optional[list] = None) -> Dict[str, Any]:
         """

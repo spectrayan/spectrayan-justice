@@ -260,7 +260,7 @@ class PDFParser:
         # Define all possible section headers that can appear in the PDF
         section_headers = [
             "CASE NO", "PETITIONER", "RESPONDENT", "DATE OF JUDGMENT",
-            "BENCH", "ACT", "HEADNOTE", "JUDGMENT:"
+            "BENCH", "ACT", "HEADNOTE:", "JUDGMENT:"
         ]
 
         # Create a regex pattern that matches any of the section headers
@@ -290,10 +290,13 @@ class PDFParser:
 
 
             for pattern in patterns:
+                logger.info(f"For header {header} - Trying pattern: {pattern}")
                 matches = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
                 if matches:
-                    logger.debug(f"Pattern '{pattern}' matched. Extracting value...")
                     value = matches.group(1).strip()
+                    # If the value is empty or just contains "HEADNOTE:", return empty string
+                    if not value or value.startswith( ("HEADNOTE:", "JUDGMENT:")): return ""
+
                     logger.debug(f"Pattern '{pattern}' matched. Extracted value: {value}")
                     return value
 
@@ -311,6 +314,7 @@ class PDFParser:
         Returns:
             Extracted field value or empty string if not found
         """
+        logger.debug(f"Trying to extract field based on content...")
         # Define section headers for delimiting content
         section_headers = [
             "CASE NO", "PETITIONER", "RESPONDENT", "DATE OF JUDGMENT",
@@ -332,7 +336,11 @@ class PDFParser:
             for pattern in act_section_patterns:
                 match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
                 if match:
-                    return match.group(1).strip()
+                    value = match.group(1).strip()
+                    # If the value is empty or just contains "HEADNOTE:", return empty string
+                    if not value or value.upper() == "HEADNOTE:":
+                        return ""
+                    return value
 
             # If no ACT section found, look for act patterns
             act_patterns = [
@@ -344,6 +352,9 @@ class PDFParser:
                 matches = re.findall(pattern, text)
                 if matches:
                     return ", ".join(set(matches))
+
+            # If no ACT found, explicitly return empty string
+            return ""
 
         elif field_type == "description":
 
@@ -361,12 +372,15 @@ class PDFParser:
             for pattern in headnote_patterns:
                 match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
                 if match:
-                    return match.group(1).strip()
+                    value = match.group(1).strip()
+                    # If the value is empty or just contains "JUDGMENT:", return empty string
+                    if not value or value.upper() == "JUDGMENT:" or value.upper() == "JUDGEMENT:":
+                        return ""
+                    return value
 
             return ""
 
         elif field_type == "verdict":
-
 
             section_pattern = "|".join([rf"{re.escape(header)}\s*:" for header in section_headers])
             section_pattern_caps = "|".join([rf"{re.escape(header.upper())}" for header in section_headers])
@@ -383,9 +397,10 @@ class PDFParser:
                 match = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
                 if match:
                     content = match.group(1).strip()
-                    # Check if the content is more than just a date
-                    if len(content) > 15 and not re.match(r'^\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4}$', content):
-                        return content
+                    # Check if the content is empty or just contains a date
+                    if not content or (len(content) <= 15 and re.match(r'^\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4}$', content)):
+                        return ""
+                    return content
 
         return ""
 
