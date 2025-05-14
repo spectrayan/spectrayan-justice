@@ -17,10 +17,16 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "fastmcp>=2.2.7",
-    "google-adk>=0.4.0",
+    "fastmcp>=2.3.3",
+    "google-adk>=0.5.0",
+    "llama-index>=0.10.0",
+    "llama-index-core>=0.12.35",
+    "llama-index-llms-ollama>=0.5.4",
     "loguru>=0.7.3",
-    "setuptools>=61.0",
+    "ollama>=0.1.5",
+    "pymupdf>=1.25.5",
+    "pytest>=8.3.5",
+    "setuptools>=80.4.0",
 ]
 
 [project.scripts]

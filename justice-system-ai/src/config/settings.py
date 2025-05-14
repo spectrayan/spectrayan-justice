@@ -14,6 +14,8 @@ from functools import lru_cache
 from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from .pdf_converter_config import PDFConverterSettings
+
 
 class Settings(BaseSettings):
     """Configuration settings for the application using pydantic BaseSettings."""
@@ -24,6 +26,9 @@ class Settings(BaseSettings):
     log_level: str = Field(default="INFO")
     log_file: str = Field(default="./logs/spectrayan.log")
 
+    # PDF Converter settings
+    pdf_converter: PDFConverterSettings = Field(default_factory=PDFConverterSettings)
+
 
     def __init__(self, **kwargs):
         """Initialize settings and ensure directories exist."""
@@ -32,6 +37,9 @@ class Settings(BaseSettings):
         # Ensure log directory exists
         log_dir = os.path.dirname(self.log_file)
         Path(log_dir).mkdir(parents=True, exist_ok=True)
+
+        # Ensure PDF converter directories exist
+        self.pdf_converter.ensure_directories()
 
 
     def as_dict(self) -> Dict[str, Any]:
