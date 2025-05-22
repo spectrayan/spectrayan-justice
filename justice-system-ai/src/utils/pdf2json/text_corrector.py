@@ -74,7 +74,7 @@ class TextCorrector:
         """
         # Check if text is None, empty, contains only whitespace, or doesn't contain any alphabets
         # Only call Ollama if the text contains at least one alphabetic character
-        logger.info(f"Correcting text: {text}")
+        logger.debug(f"Correcting text: {text}")
         if not self.is_available() or not text or not text.strip() or not re.search(r'[a-zA-Z]', text):
             logger.info("Skipping text correction: text is empty, whitespace-only, or contains no alphabets")
             return text

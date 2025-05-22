@@ -290,7 +290,7 @@ class PDFParser:
 
 
             for pattern in patterns:
-                logger.info(f"For header {header} - Trying pattern: {pattern}")
+                logger.debug(f"For header {header} - Trying pattern: {pattern}")
                 matches = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
                 if matches:
                     value = matches.group(1).strip()

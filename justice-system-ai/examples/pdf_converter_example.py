@@ -88,8 +88,8 @@ def convert_with_custom_settings():
     """Convert PDF files using custom settings."""
     # Create custom settings
     custom_settings = PDFConverterSettings(
-        #pdf_input_dir="D:\\Spectrayan\\data\\archive\\pdfs",
-        pdf_input_dir="./data/pdfs",
+        pdf_input_dir="D:\\Spectrayan\\data\\archive\\pdfs",
+        #pdf_input_dir="./data/pdfs",
         json_output_dir="./data/json",
         batch_size=5,
         use_ai_extraction=True
