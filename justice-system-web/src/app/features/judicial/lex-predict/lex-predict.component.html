@@ -1,0 +1,63 @@
+<div class="lex-predict-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Case Outcome Prediction</mat-card-title>
+      <mat-card-subtitle>Enter case details to predict the outcome</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-stepper #stepper>
+        <!-- Step 1: Case Information -->
+        <mat-step [stepControl]="caseFormGroup">
+          <ng-template matStepLabel>Case Information</ng-template>
+          <app-case-info [formGroup]="caseFormGroup"></app-case-info>
+          <div class="step-actions">
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+
+        <!-- Step 2: Lawyer Selection -->
+        <mat-step [stepControl]="lawyerFormGroup">
+          <ng-template matStepLabel>Lawyer Selection</ng-template>
+          <app-lawyer-selection [formGroup]="lawyerFormGroup"></app-lawyer-selection>
+          <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+
+        <!-- Step 3: Jury Selection -->
+        <mat-step [stepControl]="juryFormGroup">
+          <ng-template matStepLabel>Jury Selection</ng-template>
+          <app-jury-selection [formGroup]="juryFormGroup"></app-jury-selection>
+          <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+
+        <!-- Step 4: Evidence -->
+        <mat-step [stepControl]="evidenceFormGroup">
+          <ng-template matStepLabel>Evidence</ng-template>
+          <app-evidence [formGroup]="evidenceFormGroup"></app-evidence>
+          <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+
+        <!-- Step 5: Review and Submit -->
+        <mat-step [stepControl]="reviewFormGroup">
+          <ng-template matStepLabel>Review & Submit</ng-template>
+          <app-review [formGroup]="reviewFormGroup"></app-review>
+          <div class="step-actions">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" (click)="submitPrediction()">
+              Submit for Prediction
+            </button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </mat-card-content>
+  </mat-card>
+</div>

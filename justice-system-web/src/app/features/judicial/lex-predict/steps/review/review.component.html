@@ -1,0 +1,127 @@
+<!--
+<div [formGroup]="formGroup" class="review-container">
+  <h2>Review & Submit</h2>
+  <p>Review all information and submit for case outcome prediction</p>
+
+  <div formGroupName="reviewCtrl">
+    <mat-card>
+      <mat-card-content>
+        &lt;!&ndash; Case Information Summary &ndash;&gt;
+        <div class="review-section">
+          <h3>Case Information</h3>
+          <div class="review-content" *ngIf="caseData">
+            <p><strong>Case Title:</strong> {{caseData.title}}</p>
+            <p><strong>Case Number:</strong> {{caseData.caseNumber}}</p>
+            <p><strong>Case Type:</strong> {{caseData.caseType}}</p>
+            <p><strong>Case Status:</strong> {{caseData.caseStatus}}</p>
+            <p><strong>Description:</strong> {{caseData.description}}</p>
+          </div>
+          <div class="review-content empty" *ngIf="!caseData">
+            <p>No case information provided</p>
+          </div>
+        </div>
+
+        &lt;!&ndash; Lawyer Information Summary &ndash;&gt;
+        <div class="review-section">
+          <h3>Lawyer Information</h3>
+          <div class="review-content">
+            <div class="lawyer-info">
+              <h4>Defense Lawyer</h4>
+              <div *ngIf="defenseLawyer">
+                <p><strong>Name:</strong> {{defenseLawyer.person?.firstName}} {{defenseLawyer.person?.lastName}}</p>
+                <p><strong>Specialization:</strong> {{defenseLawyer.specialization}}</p>
+                <p><strong>Experience:</strong> {{defenseLawyer.yearsOfExperience}} years</p>
+              </div>
+              <div *ngIf="!defenseLawyer" class="empty">
+                <p>No defense lawyer selected</p>
+              </div>
+            </div>
+
+            <div class="lawyer-info">
+              <h4>Prosecutor</h4>
+              <div *ngIf="prosecutorLawyer">
+                <p><strong>Name:</strong> {{prosecutorLawyer.person?.firstName}} {{prosecutorLawyer.person?.lastName}}</p>
+                <p><strong>Specialization:</strong> {{prosecutorLawyer.specialization}}</p>
+                <p><strong>Experience:</strong> {{prosecutorLawyer.yearsOfExperience}} years</p>
+              </div>
+              <div *ngIf="!prosecutorLawyer" class="empty">
+                <p>No prosecutor selected</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        &lt;!&ndash; Jury Information Summary &ndash;&gt;
+        <div class="review-section">
+          <h3>Jury Information</h3>
+          <div class="review-content">
+            <div *ngIf="jurors.length > 0">
+              <p><strong>Total Jurors:</strong> {{jurors.length}}</p>
+              <mat-accordion>
+                <mat-expansion-panel *ngFor="let juror of jurors; let i = index">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Juror #{{i + 1}}: {{juror.identity?.firstName}} {{juror.identity?.lastName}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="juror-details">
+                    <p><strong>Age:</strong> {{juror.identity?.age}}</p>
+                    <p><strong>Gender:</strong> {{juror.identity?.gender}}</p>
+                    <p><strong>Personality Type:</strong> {{juror.personality?.personalityType}}</p>
+                    <p><strong>Physical Traits:</strong> {{juror.physicalTraits?.height}}cm, {{juror.physicalTraits?.weight}}kg</p>
+                    <p><strong>Emotional Intelligence:</strong> {{juror.emotionalIntelligence?.empathyLevel}}</p>
+                    <p><strong>Social Behavior:</strong> {{juror.socialBehavior?.communicationStyle}}</p>
+                    <p *ngIf="juror.disability"><strong>Disability:</strong> {{juror.disability?.type}}</p>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+            <div *ngIf="jurors.length === 0" class="empty">
+              <p>No jurors added</p>
+            </div>
+          </div>
+        </div>
+
+        &lt;!&ndash; Evidence Summary &ndash;&gt;
+        <div class="review-section">
+          <h3>Evidence</h3>
+          <div class="review-content">
+            <div *ngIf="evidences.length > 0">
+              <p><strong>Total Evidence Items:</strong> {{evidences.length}}</p>
+              <mat-list>
+                <mat-list-item *ngFor="let evidence of evidences">
+                  <mat-icon matListIcon>insert_drive_file</mat-icon>
+                  <h4 matLine>{{evidence.title}}</h4>
+                  <p matLine>{{evidence.evidenceType}} - Credibility: {{evidence.credibilityLevel}}</p>
+                  <p matLine *ngIf="evidence.fileUrl">File: {{evidence.fileUrl}}</p>
+                </mat-list-item>
+              </mat-list>
+            </div>
+            <div *ngIf="evidences.length === 0" class="empty">
+              <p>No evidence added</p>
+            </div>
+          </div>
+        </div>
+
+        &lt;!&ndash; Prediction Result &ndash;&gt;
+        <div class="prediction-section" *ngIf="predictionResult">
+          <h3>Prediction Result</h3>
+          <div class="prediction-result">
+            <mat-icon>gavel</mat-icon>
+            <p>{{predictionResult}}</p>
+          </div>
+        </div>
+
+        &lt;!&ndash; Submit Button &ndash;&gt;
+        <div class="submit-section">
+          <button mat-raised-button color="primary" (click)="getPrediction()" [disabled]="isLoading">
+            <mat-icon>analytics</mat-icon>
+            Submit for Prediction
+          </button>
+          <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+-->

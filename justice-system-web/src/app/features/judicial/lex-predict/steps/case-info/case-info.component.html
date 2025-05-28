@@ -1,0 +1,45 @@
+<div [formGroup]="formGroup" class="case-info-container">
+  <h2>Case Information</h2>
+  <p>Enter the details of the case for prediction</p>
+
+  <div formGroupName="caseCtrl">
+    <!--<app-form-case></app-form-case>-->
+
+    <div class="additional-info">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Case Description</mat-label>
+        <textarea matInput placeholder="Enter a detailed description of the case" rows="4"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Case Type</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let type of caseTypes" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Case Status</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let status of caseStatuses" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="existing-cases">
+    <h3>Or select an existing case:</h3>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Select Case</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let case of cases" [value]="case.id">
+          {{case.title}} - {{case.caseNumber}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

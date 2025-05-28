@@ -1,0 +1,92 @@
+.evidence-container {
+  padding: 10px;
+
+  h2 {
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .evidence-actions {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .evidence-list {
+    .evidence-item {
+      margin-bottom: 20px;
+
+      mat-card {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      mat-card-header {
+        margin-bottom: 10px;
+
+        mat-form-field {
+          width: 100%;
+        }
+      }
+
+      .evidence-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .full-width {
+        width: 100%;
+      }
+
+      .file-upload {
+        margin: 20px 0;
+
+        h4 {
+          margin-bottom: 10px;
+          color: rgba(0, 0, 0, 0.7);
+        }
+
+        .upload-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .file-name {
+            margin-left: 10px;
+            color: rgba(0, 0, 0, 0.6);
+          }
+        }
+      }
+
+      .existing-evidence {
+        margin-top: 20px;
+
+        h4 {
+          margin-bottom: 10px;
+          color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+  }
+
+  .no-evidence {
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+
+    p {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

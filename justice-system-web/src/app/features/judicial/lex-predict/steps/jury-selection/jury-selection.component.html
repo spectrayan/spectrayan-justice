@@ -1,0 +1,89 @@
+<div [formGroup]="formGroup" class="jury-selection-container">
+  <h2>Jury Selection</h2>
+  <p>Add jurors to the case with their personal details and characteristics</p>
+
+  <div formGroupName="juryCtrl">
+    <div class="jurors-actions">
+      <button mat-raised-button color="primary" (click)="addJuror()">
+        <mat-icon>add</mat-icon> Add New Juror
+      </button>
+    </div>
+
+    <div class="jurors-list" *ngIf="jurorsArray && jurorsArray.length > 0">
+      <div class="juror-item" *ngFor="let control of jurorsArray.controls; let i = index" [formGroup]="getJurorFormGroup(i)">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Juror #{{i + 1}}
+            </mat-panel-title>
+            <mat-panel-description>
+              <span *ngIf="selectedJurors[i]">
+                {{selectedJurors[i].firstName}} {{selectedJurors[i].lastName}}
+              </span>
+              <span *ngIf="!selectedJurors[i]">New Juror</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="juror-selection">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Select Existing Juror</mat-label>
+              <mat-select (selectionChange)="selectExistingJuror($event.value, i)">
+                <mat-option *ngFor="let juror of jurors" [value]="juror">
+                  {{juror.firstName}} {{juror.lastName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <mat-tab-group>
+            <mat-tab label="Identity">
+              <div formGroupName="identity">
+                <app-form-identity [form]="getJurorFormGroup(i).controls.identity"></app-form-identity>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Personality">
+              <div formGroupName="personality">
+                <app-form-personality [form]="getJurorFormGroup(i).controls.personality"></app-form-personality>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Physical Traits">
+              <div formGroupName="physicalTraits">
+                <app-form-physical-traits [form]="getJurorFormGroup(i).controls.physicalTraits"></app-form-physical-traits>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Emotional Intelligence">
+              <div formGroupName="emotionalIntelligence">
+                <app-form-emotional-intelligence [form]="getJurorFormGroup(i).controls.emotionalIntelligence"></app-form-emotional-intelligence>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Social Behavior">
+              <div formGroupName="socialBehavior">
+                <app-form-social-behavior [form]="getJurorFormGroup(i).controls.socialBehavior"></app-form-social-behavior>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Disability">
+              <div formGroupName="disability">
+                <app-form-disability [form]="getJurorFormGroup(i).controls.disability"></app-form-disability>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+
+          <div class="juror-actions">
+            <button mat-button color="warn" (click)="removeJuror(i)">
+              <mat-icon>delete</mat-icon> Remove Juror
+            </button>
+          </div>
+        </mat-expansion-panel>
+      </div>
+    </div>
+
+    <div class="no-jurors" *ngIf="!jurorsArray || jurorsArray.length === 0">
+      <p>No jurors added yet. Click "Add New Juror" to begin.</p>
+    </div>
+  </div>
+</div>

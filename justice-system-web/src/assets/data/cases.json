@@ -1,0 +1,72 @@
+[
+  {
+    "id": "case-001",
+    "title": "State v. Johnson",
+    "caseNumber": "CR-2025-1234",
+    "caseType": "Criminal",
+    "caseStatus": "Active",
+    "description": "Defendant John Johnson is charged with armed robbery of First National Bank on January 15, 2025.",
+    "filingDate": "2025-01-20",
+    "court": {
+      "id": "court-001",
+      "name": "Superior Court of Justice",
+      "courtType": "Criminal"
+    }
+  },
+  {
+    "id": "case-002",
+    "title": "Smith v. Anderson Corp",
+    "caseNumber": "CV-2025-5678",
+    "caseType": "Civil",
+    "caseStatus": "Active",
+    "description": "Plaintiff Sarah Smith is suing Anderson Corporation for workplace discrimination and wrongful termination.",
+    "filingDate": "2025-02-10",
+    "court": {
+      "id": "court-002",
+      "name": "District Court",
+      "courtType": "Civil"
+    }
+  },
+  {
+    "id": "case-003",
+    "title": "In re: Estate of Williams",
+    "caseNumber": "PR-2025-9012",
+    "caseType": "Probate",
+    "caseStatus": "Pending",
+    "description": "Probate case regarding the distribution of assets from the estate of Robert Williams.",
+    "filingDate": "2025-03-05",
+    "court": {
+      "id": "court-003",
+      "name": "Probate Court",
+      "courtType": "Probate"
+    }
+  },
+  {
+    "id": "case-004",
+    "title": "State v. Thompson",
+    "caseNumber": "CR-2025-3456",
+    "caseType": "Criminal",
+    "caseStatus": "Active",
+    "description": "Defendant Emily Thompson is charged with aggravated assault that occurred on February 28, 2025.",
+    "filingDate": "2025-03-10",
+    "court": {
+      "id": "court-001",
+      "name": "Superior Court of Justice",
+      "courtType": "Criminal"
+    }
+  },
+  {
+    "id": "case-005",
+    "title": "Brown v. City of Metropolis",
+    "caseNumber": "CV-2025-7890",
+    "caseType": "Civil",
+    "caseStatus": "Active",
+    "description": "Plaintiff Michael Brown is suing the City of Metropolis for damages resulting from a pothole accident.",
+    "filingDate": "2025-04-15",
+    "court": {
+      "id": "court-002",
+      "name": "District Court",
+      "courtType": "Civil"
+    }
+  }
+]

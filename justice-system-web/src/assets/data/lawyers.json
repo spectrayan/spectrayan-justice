@@ -1,0 +1,157 @@
+[
+  {
+    "id": "lawyer-001",
+    "person": {
+      "id": "person-001",
+      "firstName": "James",
+      "lastName": "Rodriguez",
+      "title": "Mr",
+      "gender": "Male",
+      "age": 45,
+      "address": {
+        "street": "123 Legal Ave",
+        "city": "Metropolis",
+        "state": "NY",
+        "zipCode": "10001",
+        "country": "USA"
+      },
+      "phones": [
+        {
+          "number": "212-555-1234",
+          "phoneType": "Work"
+        }
+      ]
+    },
+    "barNumber": "NY12345",
+    "lawyerType": "Defense",
+    "specialization": "Criminal Defense",
+    "yearsOfExperience": 18,
+    "winRate": 0.72,
+    "education": "Harvard Law School",
+    "firm": "Rodriguez & Associates"
+  },
+  {
+    "id": "lawyer-002",
+    "person": {
+      "id": "person-002",
+      "firstName": "Sarah",
+      "lastName": "Chen",
+      "title": "Ms",
+      "gender": "Female",
+      "age": 38,
+      "address": {
+        "street": "456 Justice Blvd",
+        "city": "Metropolis",
+        "state": "NY",
+        "zipCode": "10002",
+        "country": "USA"
+      },
+      "phones": [
+        {
+          "number": "212-555-5678",
+          "phoneType": "Work"
+        }
+      ]
+    },
+    "barNumber": "NY23456",
+    "lawyerType": "Prosecutor",
+    "specialization": "Criminal Prosecution",
+    "yearsOfExperience": 12,
+    "winRate": 0.68,
+    "education": "Yale Law School",
+    "firm": "District Attorney's Office"
+  },
+  {
+    "id": "lawyer-003",
+    "person": {
+      "id": "person-003",
+      "firstName": "Michael",
+      "lastName": "Washington",
+      "title": "Mr",
+      "gender": "Male",
+      "age": 52,
+      "address": {
+        "street": "789 Court St",
+        "city": "Metropolis",
+        "state": "NY",
+        "zipCode": "10003",
+        "country": "USA"
+      },
+      "phones": [
+        {
+          "number": "212-555-9012",
+          "phoneType": "Work"
+        }
+      ]
+    },
+    "barNumber": "NY34567",
+    "lawyerType": "Defense",
+    "specialization": "Civil Litigation",
+    "yearsOfExperience": 25,
+    "winRate": 0.75,
+    "education": "Columbia Law School",
+    "firm": "Washington Law Group"
+  },
+  {
+    "id": "lawyer-004",
+    "person": {
+      "id": "person-004",
+      "firstName": "Emily",
+      "lastName": "Garcia",
+      "title": "Ms",
+      "gender": "Female",
+      "age": 41,
+      "address": {
+        "street": "321 Prosecution Ave",
+        "city": "Metropolis",
+        "state": "NY",
+        "zipCode": "10004",
+        "country": "USA"
+      },
+      "phones": [
+        {
+          "number": "212-555-3456",
+          "phoneType": "Work"
+        }
+      ]
+    },
+    "barNumber": "NY45678",
+    "lawyerType": "Prosecutor",
+    "specialization": "Violent Crimes",
+    "yearsOfExperience": 15,
+    "winRate": 0.82,
+    "education": "Stanford Law School",
+    "firm": "District Attorney's Office"
+  },
+  {
+    "id": "lawyer-005",
+    "person": {
+      "id": "person-005",
+      "firstName": "David",
+      "lastName": "Kim",
+      "title": "Mr",
+      "gender": "Male",
+      "age": 36,
+      "address": {
+        "street": "654 Defense Dr",
+        "city": "Metropolis",
+        "state": "NY",
+        "zipCode": "10005",
+        "country": "USA"
+      },
+      "phones": [
+        {
+          "number": "212-555-7890",
+          "phoneType": "Work"
+        }
+      ]
+    },
+    "barNumber": "NY56789",
+    "lawyerType": "Both",
+    "specialization": "Corporate Law",
+    "yearsOfExperience": 10,
+    "winRate": 0.65,
+    "education": "NYU Law School",
+    "firm": "Kim & Partners"
+  }
+]

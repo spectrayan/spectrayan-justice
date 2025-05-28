@@ -1,0 +1,84 @@
+.jury-selection-container {
+  padding: 10px;
+
+  h2 {
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .jurors-actions {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .jurors-list {
+    .juror-item {
+      margin-bottom: 16px;
+
+      mat-expansion-panel {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .juror-selection {
+        margin-bottom: 20px;
+
+        .full-width {
+          width: 100%;
+        }
+      }
+
+      mat-tab-group {
+        margin-bottom: 20px;
+      }
+
+      .juror-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .no-jurors {
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+
+    p {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  ::ng-deep {
+    .mat-tab-body-content {
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0 16px 16px;
+    }
+
+    .mat-tab-body {
+      overflow: hidden;
+    }
+
+    app-form-identity,
+    app-form-personality,
+    app-form-physical-traits,
+    app-form-emotional-intelligence,
+    app-form-social-behavior,
+    app-form-disability {
+      display: block;
+      width: 100%;
+      overflow-x: hidden;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+.review-container {
+  padding: 10px;
+
+  h2 {
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .review-section {
+    margin-bottom: 30px;
+
+    h3 {
+      color: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+
+    .review-content {
+      padding: 0 16px;
+
+      p {
+        margin-bottom: 8px;
+      }
+
+      &.empty {
+        color: rgba(0, 0, 0, 0.4);
+        font-style: italic;
+      }
+
+      .lawyer-info {
+        margin-bottom: 20px;
+
+        h4 {
+          color: rgba(0, 0, 0, 0.7);
+          margin-bottom: 10px;
+        }
+      }
+
+      mat-accordion {
+        margin-top: 16px;
+
+        .juror-details {
+          padding: 16px;
+        }
+      }
+
+      mat-list {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .prediction-section {
+    margin-top: 40px;
+    margin-bottom: 30px;
+
+    h3 {
+      color: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+
+    .prediction-result {
+      background-color: #e3f2fd;
+      border-radius: 4px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        margin-right: 16px;
+        color: #1976d2;
+      }
+
+      p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: #1976d2;
+      }
+    }
+  }
+
+  .submit-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 30px;
+
+    button {
+      padding: 8px 24px;
+    }
+  }
+}

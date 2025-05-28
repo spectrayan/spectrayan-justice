@@ -1,0 +1,93 @@
+<div class="case-management-container">
+  <div class="header">
+    <h1>Case Management</h1>
+    <button mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>
+      New Case
+    </button>
+  </div>
+
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Search Cases</mat-label>
+      <input matInput placeholder="Enter case number, title, or name">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Case Type</mat-label>
+      <mat-select>
+        <mat-option value="all">All Types</mat-option>
+        <mat-option value="criminal">Criminal</mat-option>
+        <mat-option value="civil">Civil</mat-option>
+        <mat-option value="family">Family</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select>
+        <mat-option value="all">All Statuses</mat-option>
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="pending">Pending</mat-option>
+        <mat-option value="closed">Closed</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="table-container mat-elevation-z2">
+    <table mat-table [dataSource]="cases" class="cases-table">
+      <!-- Case Number Column -->
+      <ng-container matColumnDef="caseNumber">
+        <th mat-header-cell *matHeaderCellDef>Case Number</th>
+        <td mat-cell *matCellDef="let case">{{ case.caseNumber }}</td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let case">{{ case.title }}</td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let case">{{ case.type }}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let case">
+          <span class="status-badge" [ngClass]="case.status.toLowerCase()">
+            {{ case.status }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let case">{{ case.date | date:'mediumDate' }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let case">
+          <button mat-icon-button color="primary" (click)="viewCase(case.caseNumber)" matTooltip="View Case">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="editCase(case.caseNumber)" matTooltip="Edit Case">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

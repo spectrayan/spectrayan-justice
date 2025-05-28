@@ -1,0 +1,92 @@
+<div [formGroup]="formGroup" class="evidence-container">
+  <h2>Evidence</h2>
+  <p>Add and upload evidence for the case</p>
+
+  <div formGroupName="evidenceCtrl">
+    <div class="evidence-actions">
+      <button mat-raised-button color="primary" (click)="addEvidence()">
+        <mat-icon>add</mat-icon> Add Evidence
+      </button>
+    </div>
+
+    <div class="evidence-list" *ngIf="evidencesArray && evidencesArray.length > 0">
+      <div class="evidence-item" *ngFor="let control of evidencesArray.controls; let i = index" [formGroup]="getEvidenceFormGroup(i)">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              <mat-form-field appearance="fill">
+                <mat-label>Evidence Title</mat-label>
+                <input matInput formControlName="title" placeholder="Enter evidence title">
+              </mat-form-field>
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="evidence-form-row">
+              <mat-form-field appearance="fill">
+                <mat-label>Evidence Type</mat-label>
+                <mat-select formControlName="evidenceType">
+                  <mat-option *ngFor="let type of evidenceTypes" [value]="type">
+                    {{type}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Credibility Level</mat-label>
+                <mat-select formControlName="credibilityLevel">
+                  <mat-option value="High">High</mat-option>
+                  <mat-option value="Medium">Medium</mat-option>
+                  <mat-option value="Low">Low</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-checkbox formControlName="isAdmissible">Admissible</mat-checkbox>
+            </div>
+
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description" rows="3" placeholder="Describe the evidence"></textarea>
+            </mat-form-field>
+
+            <div class="file-upload">
+              <h4>Upload Evidence File</h4>
+              <div class="upload-container">
+                <button mat-stroked-button type="button" (click)="fileInput.click()">
+                  <mat-icon>attach_file</mat-icon> Choose File
+                </button>
+                <input hidden #fileInput type="file" (change)="onFileSelected($event, i)">
+                <span class="file-name" *ngIf="selectedFiles[i]">{{selectedFiles[i].name}}</span>
+                <span class="file-name" *ngIf="!selectedFiles[i] && getEvidenceFormGroup(i).get('fileUrl')?.value">
+                  {{getEvidenceFormGroup(i).get('fileUrl')?.value}}
+                </span>
+              </div>
+            </div>
+
+            <div class="existing-evidence">
+              <h4>Or select existing evidence:</h4>
+              <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Select Evidence</mat-label>
+                <mat-select (selectionChange)="selectExistingEvidence($event.value, i)">
+                  <mat-option *ngFor="let evidence of evidences" [value]="evidence">
+                    {{evidence.description}} - {{evidence.type}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button mat-button color="warn" (click)="removeEvidence(i)">
+              <mat-icon>delete</mat-icon> Remove
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="no-evidence" *ngIf="!evidencesArray || evidencesArray.length === 0">
+      <p>No evidence added yet. Click "Add Evidence" to begin.</p>
+    </div>
+  </div>
+</div>

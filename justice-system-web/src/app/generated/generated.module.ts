@@ -62,6 +62,8 @@ import { SocialBehaviorFormComponent } from './form-components/social-behavior.f
 import { VictimFormComponent } from './form-components/victim.form.component';
 import { WitnessFormComponent } from './form-components/witness.form.component';
 import {SharedModule} from '../shared/shared.module';
+import {DisabilityFormComponent} from './form-components/disability.form.component';
+import {EmotionalIntelligenceFormComponent} from './form-components/emotional-intelligence.form.component';
 
 // Array of all form components for easier management
 const formComponents = [
@@ -83,7 +85,10 @@ const formComponents = [
   ReporterFormComponent,
   SocialBehaviorFormComponent,
   VictimFormComponent,
-  WitnessFormComponent
+  WitnessFormComponent,
+  DisabilityFormComponent,
+  EmotionalIntelligenceFormComponent,
+
 ];
 
 // Array of all Angular Material modules

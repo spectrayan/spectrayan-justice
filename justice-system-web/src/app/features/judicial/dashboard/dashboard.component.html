@@ -1,0 +1,67 @@
+<div class="dashboard-container">
+  <h1>Judicial Dashboard</h1>
+
+  <div class="dashboard-cards">
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>gavel</mat-icon>
+        </div>
+        <mat-card-title>Active Cases</mat-card-title>
+        <mat-card-subtitle>Current caseload</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>42</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>event</mat-icon>
+        </div>
+        <mat-card-title>Upcoming Hearings</mat-card-title>
+        <mat-card-subtitle>Next 7 days</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>12</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>assignment_turned_in</mat-icon>
+        </div>
+        <mat-card-title>Resolved Cases</mat-card-title>
+        <mat-card-subtitle>Last 30 days</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>18</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="dashboard-section">
+    <h2>Recent Activity</h2>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon matListIcon>folder</mat-icon>
+        <h3 matLine>Case #12345 updated</h3>
+        <p matLine>New document added - 2 hours ago</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-icon matListIcon>schedule</mat-icon>
+        <h3 matLine>Hearing scheduled</h3>
+        <p matLine>Case #54321 - Tomorrow at 10:00 AM</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-icon matListIcon>gavel</mat-icon>
+        <h3 matLine>Judgment issued</h3>
+        <p matLine>Case #98765 - Yesterday</p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

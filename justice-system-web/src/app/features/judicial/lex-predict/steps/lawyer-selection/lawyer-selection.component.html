@@ -1,0 +1,44 @@
+<div [formGroup]="formGroup" class="lawyer-selection-container">
+  <h2>Lawyer Selection</h2>
+  <p>Select defense and prosecutor lawyers for the case</p>
+
+  <div class="lawyer-sections">
+    <!-- Defense Lawyer Section -->
+    <div class="lawyer-section" formGroupName="defenseCtrl">
+      <h3>Defense Lawyer</h3>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Select Defense Lawyer</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let lawyer of defenseLawyers" [value]="lawyer.id">
+            {{lawyer.firstName}} {{lawyer.lastName}} - {{lawyer.type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="selected-lawyer-details">
+        <h4>Selected Lawyer Details</h4>
+        <!--<app-form-lawyer></app-form-lawyer>-->
+      </div>
+    </div>
+
+    <!-- Prosecutor Lawyer Section -->
+    <div class="lawyer-section" formGroupName="prosecutorCtrl">
+      <h3>Prosecutor</h3>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Select Prosecutor</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let lawyer of prosecutorLawyers" [value]="lawyer.id">
+            {{lawyer.firstName}} {{lawyer.lastName}} - {{lawyer.type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="selected-lawyer-details">
+        <h4>Selected Lawyer Details</h4>
+        <!--<app-form-lawyer></app-form-lawyer>-->
+      </div>
+    </div>
+  </div>
+</div>

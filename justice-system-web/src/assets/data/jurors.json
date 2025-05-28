@@ -1,0 +1,257 @@
+[
+  {
+    "id": "juror-001",
+    "identity": {
+      "firstName": "Robert",
+      "lastName": "Johnson",
+      "title": "Mr",
+      "gender": "Male",
+      "age": 42,
+      "race": "Caucasian",
+      "religion": "Christian",
+      "occupation": "Software Engineer",
+      "education": "Bachelor's Degree"
+    },
+    "personality": {
+      "personalityType": "INTJ",
+      "bigFiveTraits": {
+        "openness": 0.8,
+        "conscientiousness": 0.9,
+        "extraversion": 0.3,
+        "agreeableness": 0.6,
+        "neuroticism": 0.2
+      },
+      "leadershipStyle": "Strategic",
+      "communicationStyle": "Direct"
+    },
+    "physicalTraits": {
+      "height": 180,
+      "weight": 75,
+      "eyeColor": "Blue",
+      "hairColor": "Brown",
+      "physicalCondition": "Healthy"
+    },
+    "emotionalIntelligence": {
+      "empathyLevel": "High",
+      "selfAwareness": 0.8,
+      "selfRegulation": 0.7,
+      "motivation": 0.9,
+      "socialSkills": 0.6,
+      "stressResponse": "Calm"
+    },
+    "socialBehavior": {
+      "communicationStyle": "Analytical",
+      "conflictResolutionStyle": "Compromising",
+      "trustLevel": "Medium",
+      "socialNetworkSize": "Medium",
+      "socialInfluence": 0.6,
+      "teamworkAbility": 0.7,
+      "adaptability": 0.8
+    }
+  },
+  {
+    "id": "juror-002",
+    "identity": {
+      "firstName": "Maria",
+      "lastName": "Garcia",
+      "title": "Ms",
+      "gender": "Female",
+      "age": 35,
+      "race": "Hispanic",
+      "religion": "Catholic",
+      "occupation": "Teacher",
+      "education": "Master's Degree"
+    },
+    "personality": {
+      "personalityType": "ENFJ",
+      "bigFiveTraits": {
+        "openness": 0.7,
+        "conscientiousness": 0.8,
+        "extraversion": 0.9,
+        "agreeableness": 0.8,
+        "neuroticism": 0.3
+      },
+      "leadershipStyle": "Transformational",
+      "communicationStyle": "Empathetic"
+    },
+    "physicalTraits": {
+      "height": 165,
+      "weight": 60,
+      "eyeColor": "Brown",
+      "hairColor": "Black",
+      "physicalCondition": "Fit"
+    },
+    "emotionalIntelligence": {
+      "empathyLevel": "Very High",
+      "selfAwareness": 0.9,
+      "selfRegulation": 0.8,
+      "motivation": 0.9,
+      "socialSkills": 0.9,
+      "stressResponse": "Resilient"
+    },
+    "socialBehavior": {
+      "communicationStyle": "Expressive",
+      "conflictResolutionStyle": "Collaborating",
+      "trustLevel": "High",
+      "socialNetworkSize": "Large",
+      "socialInfluence": 0.8,
+      "teamworkAbility": 0.9,
+      "adaptability": 0.8
+    }
+  },
+  {
+    "id": "juror-003",
+    "identity": {
+      "firstName": "James",
+      "lastName": "Williams",
+      "title": "Mr",
+      "gender": "Male",
+      "age": 58,
+      "race": "African American",
+      "religion": "Baptist",
+      "occupation": "Retired Police Officer",
+      "education": "Associate's Degree"
+    },
+    "personality": {
+      "personalityType": "ESTJ",
+      "bigFiveTraits": {
+        "openness": 0.5,
+        "conscientiousness": 0.9,
+        "extraversion": 0.7,
+        "agreeableness": 0.6,
+        "neuroticism": 0.3
+      },
+      "leadershipStyle": "Authoritative",
+      "communicationStyle": "Direct"
+    },
+    "physicalTraits": {
+      "height": 185,
+      "weight": 90,
+      "eyeColor": "Brown",
+      "hairColor": "Gray",
+      "physicalCondition": "Average"
+    },
+    "emotionalIntelligence": {
+      "empathyLevel": "Medium",
+      "selfAwareness": 0.7,
+      "selfRegulation": 0.8,
+      "motivation": 0.7,
+      "socialSkills": 0.6,
+      "stressResponse": "Steady"
+    },
+    "socialBehavior": {
+      "communicationStyle": "Assertive",
+      "conflictResolutionStyle": "Competing",
+      "trustLevel": "Medium",
+      "socialNetworkSize": "Medium",
+      "socialInfluence": 0.7,
+      "teamworkAbility": 0.6,
+      "adaptability": 0.5
+    },
+    "disability": {
+      "type": "Hearing",
+      "severity": "Mild",
+      "accommodationsNeeded": "May need audio amplification"
+    }
+  },
+  {
+    "id": "juror-004",
+    "identity": {
+      "firstName": "Emily",
+      "lastName": "Chen",
+      "title": "Ms",
+      "gender": "Female",
+      "age": 29,
+      "race": "Asian",
+      "religion": "Buddhist",
+      "occupation": "Accountant",
+      "education": "Bachelor's Degree"
+    },
+    "personality": {
+      "personalityType": "ISFJ",
+      "bigFiveTraits": {
+        "openness": 0.6,
+        "conscientiousness": 0.9,
+        "extraversion": 0.4,
+        "agreeableness": 0.8,
+        "neuroticism": 0.4
+      },
+      "leadershipStyle": "Servant",
+      "communicationStyle": "Supportive"
+    },
+    "physicalTraits": {
+      "height": 160,
+      "weight": 55,
+      "eyeColor": "Brown",
+      "hairColor": "Black",
+      "physicalCondition": "Healthy"
+    },
+    "emotionalIntelligence": {
+      "empathyLevel": "High",
+      "selfAwareness": 0.8,
+      "selfRegulation": 0.9,
+      "motivation": 0.8,
+      "socialSkills": 0.7,
+      "stressResponse": "Adaptive"
+    },
+    "socialBehavior": {
+      "communicationStyle": "Reflective",
+      "conflictResolutionStyle": "Accommodating",
+      "trustLevel": "Medium",
+      "socialNetworkSize": "Small",
+      "socialInfluence": 0.5,
+      "teamworkAbility": 0.8,
+      "adaptability": 0.7
+    }
+  },
+  {
+    "id": "juror-005",
+    "identity": {
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "title": "Mr",
+      "gender": "Male",
+      "age": 45,
+      "race": "Caucasian",
+      "religion": "Jewish",
+      "occupation": "Small Business Owner",
+      "education": "Bachelor's Degree"
+    },
+    "personality": {
+      "personalityType": "ENTP",
+      "bigFiveTraits": {
+        "openness": 0.9,
+        "conscientiousness": 0.6,
+        "extraversion": 0.8,
+        "agreeableness": 0.5,
+        "neuroticism": 0.4
+      },
+      "leadershipStyle": "Democratic",
+      "communicationStyle": "Persuasive"
+    },
+    "physicalTraits": {
+      "height": 178,
+      "weight": 82,
+      "eyeColor": "Green",
+      "hairColor": "Brown",
+      "physicalCondition": "Average"
+    },
+    "emotionalIntelligence": {
+      "empathyLevel": "Medium",
+      "selfAwareness": 0.7,
+      "selfRegulation": 0.6,
+      "motivation": 0.8,
+      "socialSkills": 0.8,
+      "stressResponse": "Reactive"
+    },
+    "socialBehavior": {
+      "communicationStyle": "Debative",
+      "conflictResolutionStyle": "Compromising",
+      "trustLevel": "Medium",
+      "socialNetworkSize": "Large",
+      "socialInfluence": 0.7,
+      "teamworkAbility": 0.6,
+      "adaptability": 0.8
+    }
+  }
+]

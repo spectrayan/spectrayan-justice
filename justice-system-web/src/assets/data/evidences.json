@@ -1,0 +1,114 @@
+[
+  {
+    "id": "evidence-001",
+    "title": "Security Camera Footage",
+    "description": "Footage from the bank's security camera showing the robbery in progress on January 15, 2025.",
+    "evidenceType": "Digital",
+    "fileUrl": "security_footage_20250115.mp4",
+    "credibilityLevel": "High",
+    "isAdmissible": true,
+    "digitalProperties": {
+      "fileFormat": "MP4",
+      "fileSize": "256MB",
+      "duration": "15 minutes",
+      "resolution": "1080p",
+      "metadata": "Contains timestamp and camera ID"
+    }
+  },
+  {
+    "id": "evidence-002",
+    "title": "Fingerprint Analysis Report",
+    "description": "Forensic analysis of fingerprints found on the bank counter matching the defendant.",
+    "evidenceType": "Forensic",
+    "fileUrl": "fingerprint_analysis_report.pdf",
+    "credibilityLevel": "High",
+    "isAdmissible": true,
+    "forensicProperties": {
+      "analysisMethod": "AFIS Comparison",
+      "matchProbability": "99.7%",
+      "collectionDate": "2025-01-15",
+      "analysisDate": "2025-01-18",
+      "analyst": "Dr. Sarah Johnson, Forensic Specialist"
+    }
+  },
+  {
+    "id": "evidence-003",
+    "title": "Witness Statement - Bank Teller",
+    "description": "Statement from Mary Wilson, the bank teller who was present during the robbery.",
+    "evidenceType": "Documentary",
+    "fileUrl": "witness_statement_wilson.pdf",
+    "credibilityLevel": "Medium",
+    "isAdmissible": true,
+    "documentaryProperties": {
+      "documentType": "Sworn Statement",
+      "dateCreated": "2025-01-15",
+      "author": "Mary Wilson",
+      "notarized": true,
+      "pageCount": 3
+    }
+  },
+  {
+    "id": "evidence-004",
+    "title": "Weapon - Handgun",
+    "description": "9mm handgun recovered from the defendant's residence matching the weapon used in the robbery.",
+    "evidenceType": "Physical",
+    "fileUrl": "weapon_photo.jpg",
+    "credibilityLevel": "High",
+    "isAdmissible": true,
+    "physicalProperties": {
+      "dimensions": "20cm x 15cm x 3cm",
+      "weight": "0.9kg",
+      "condition": "Good",
+      "serialNumber": "XG4582",
+      "chainOfCustody": "Recovered by Officer Johnson, transferred to Evidence Room #42"
+    }
+  },
+  {
+    "id": "evidence-005",
+    "title": "Cell Phone Records",
+    "description": "Records showing the defendant's cell phone was in the vicinity of the bank at the time of the robbery.",
+    "evidenceType": "Digital",
+    "fileUrl": "cell_phone_records.pdf",
+    "credibilityLevel": "Medium",
+    "isAdmissible": true,
+    "digitalProperties": {
+      "fileFormat": "PDF",
+      "fileSize": "2.4MB",
+      "dateRange": "January 15, 2025, 9:00 AM - 11:00 AM",
+      "provider": "MetroCell Communications",
+      "metadata": "Contains tower IDs and signal strength"
+    }
+  },
+  {
+    "id": "evidence-006",
+    "title": "Bank Transaction Records",
+    "description": "Records of transactions made at the bank on the day of the robbery, showing the amount stolen.",
+    "evidenceType": "Documentary",
+    "fileUrl": "bank_transaction_records.xlsx",
+    "credibilityLevel": "High",
+    "isAdmissible": true,
+    "documentaryProperties": {
+      "documentType": "Financial Records",
+      "dateCreated": "2025-01-15",
+      "author": "First National Bank",
+      "notarized": false,
+      "pageCount": 12
+    }
+  },
+  {
+    "id": "evidence-007",
+    "title": "DNA Analysis Report",
+    "description": "Analysis of DNA found on a mask dropped at the scene, matching the defendant.",
+    "evidenceType": "Forensic",
+    "fileUrl": "dna_analysis_report.pdf",
+    "credibilityLevel": "High",
+    "isAdmissible": true,
+    "forensicProperties": {
+      "analysisMethod": "PCR and STR Analysis",
+      "matchProbability": "99.9999%",
+      "collectionDate": "2025-01-15",
+      "analysisDate": "2025-01-25",
+      "analyst": "Dr. Michael Chen, DNA Specialist"
+    }
+  }
+]
