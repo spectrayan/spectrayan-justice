@@ -42,6 +42,18 @@ mvn clean generate-sources -pl justice-system-openapi -am -P python-models
 2. Generate the required code using the build commands above
 3. Follow the setup instructions in each module's README
 
+## Contributing
+
+We welcome contributions to the Spectrayan Justice System! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and suggest improvements.
+
+## Code of Conduct
+
+This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a welcoming and inclusive environment for all contributors and participants.
+
+## Security
+
+If you discover a security vulnerability, please follow our [Security Policy](SECURITY.md) for responsible disclosure.
+
 ## License
 
-MIT
+This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.

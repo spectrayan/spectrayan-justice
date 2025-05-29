@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or Discussion
+    url: https://github.com/yourusername/spectrayan-justice/discussions
+    about: Please ask and answer questions or start a discussion here
+  - name: Documentation
+    url: https://github.com/yourusername/spectrayan-justice#readme
+    about: Check out the project documentation for answers to common questions
+  - name: Security Issue
+    url: https://github.com/yourusername/spectrayan-justice/blob/main/SECURITY.md
+    about: Please report security vulnerabilities according to our security policy

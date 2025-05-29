@@ -1,0 +1,73 @@
+# Dependabot configuration file
+# See https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # Maven dependencies for the main project
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+
+  # Maven dependencies for the OpenAPI module
+  - package-ecosystem: "maven"
+    directory: "/justice-system-openapi"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "api"
+      - "automated"
+    commit-message:
+      prefix: "deps(api)"
+      include: "scope"
+
+  # npm dependencies for the Web module
+  - package-ecosystem: "npm"
+    directory: "/justice-system-web"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "frontend"
+      - "automated"
+    commit-message:
+      prefix: "deps(web)"
+      include: "scope"
+
+  # pip dependencies for the AI module
+  - package-ecosystem: "pip"
+    directory: "/justice-system-ai"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ai"
+      - "automated"
+    commit-message:
+      prefix: "deps(ai)"
+      include: "scope"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "automated"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
