@@ -16,7 +16,7 @@
         <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skip.spring.boot.build>true</skip.spring.boot.build>
-        <openapi-generator.version>7.12.0</openapi-generator.version>
+        <openapi-generator.version>7.13.0</openapi-generator.version>
     </properties>
 
     <profiles>
